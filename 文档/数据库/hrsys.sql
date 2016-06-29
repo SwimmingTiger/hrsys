@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `department` (
   `phone` varchar(40) NOT NULL COMMENT '电话',
   `fax` varchar(40) NOT NULL COMMENT '传真',
   `desc` varchar(255) NOT NULL COMMENT '描述',
-  `parent_id` int(11) NOT NULL COMMENT '上级部门编号',
+  `parent_id` int(11) DEFAULT NULL COMMENT '上级部门编号',
   `birth_date` date NOT NULL COMMENT '成立日期',
   PRIMARY KEY (`id`),
   KEY `type_id` (`type_id`),
