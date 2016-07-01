@@ -66,8 +66,8 @@ public class TypeDAO {
 
                 while (itemRs.next()) {
                     TypeItem item = new TypeItem();
-                    item.setId(rs.getInt("id"));
-                    item.setName(rs.getString("name"));
+                    item.setId(itemRs.getInt("id"));
+                    item.setName(itemRs.getString("name"));
                     item.setGroupId(groupId);
                     group.add(item);
                 }
