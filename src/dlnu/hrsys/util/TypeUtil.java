@@ -33,7 +33,7 @@ public class TypeUtil {
         dao = new TypeDAO();
     }
 
-    public TypeUtil getInstance() throws DBUtil.DBException {
+    public static TypeUtil getInstance() throws DBUtil.DBException {
         if (instance == null) {
             instance = new TypeUtil();
         }

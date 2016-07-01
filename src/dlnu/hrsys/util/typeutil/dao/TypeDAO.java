@@ -69,6 +69,7 @@ public class TypeDAO {
                     item.setId(rs.getInt("id"));
                     item.setName(rs.getString("name"));
                     item.setGroupId(groupId);
+                    group.add(item);
                 }
             }
 
