@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `graduate_school` varchar(255) NOT NULL COMMENT '毕业院校',
   `major_name` varchar(255) NOT NULL COMMENT '所学专业',
   `graduate_date` date NOT NULL COMMENT '毕业日期',
+  `probation_status` int(11) NOT NULL DEFAULT '0' COMMENT '试用状态',
   PRIMARY KEY (`id`),
   KEY `name` (`name`),
   KEY `sex_id` (`sex_id`),
