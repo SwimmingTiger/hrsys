@@ -7,12 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
-
-
-import utils.OraDB;
 import dlnu.hrsys.employee.dao.EmployeeDao;
 import dlnu.hrsys.employee.entity.Employee;
 import dlnu.hrsys.util.DBUtil;
