@@ -3,6 +3,8 @@ package dlnu.hrsys.employee.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -102,6 +104,14 @@ public class EmployeeServlet extends HttpServlet {
 				  request.getRequestDispatcher("/index.jsp").forward(request,response); 
 			  			}
 		  }
+		  
+		  if("find".equals(flag)){
+			  List list = new ArrayList();		
+			  list = edm.findEmployeeByHire_Id(4);
+			  session.setAttribute("emp_linshi", list);
+			  request.getRequestDispatcher("/index.jsp").forward(request,response); 
+		  }
+		  
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
