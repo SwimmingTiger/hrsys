@@ -1,0 +1,133 @@
+@CHARSET "UTF-8";
+
+td,th {
+	font-size: 12px;
+}
+
+body {
+	font-size: 12px;
+	margin: 0px;
+}
+
+a.tit {
+	color: #247BCE;
+	text-decoration: none;
+}
+
+a.tit:link {
+	color: #247BCE;
+	text-decoration: none;
+}
+
+a.tit:hover {
+	color: #0426C7;
+	text-decoration: underline;
+}
+
+a.regtit {
+	color: #c1e3fb;
+	text-decoration: none;
+}
+
+a.regtit:link {
+	color: #c1e3fb;
+	text-decoration: none;
+}
+
+a.regtit:hover {
+	color: #ffffbe;
+	text-decoration: underline;
+}
+
+a.msg {
+	color: #1657D4;
+	text-decoration: none;
+}
+
+a.msg:link {
+	color:#1344B1;
+	text-decoration: none;
+}
+
+a.msg:hover {
+	color:#5D0422;
+	text-decoration: underline;
+}
+
+.niceform {
+	border-color: #89B4D3;
+	border-style: solid;
+	border-width: 1px;
+	width: 175px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.niceform_hover {
+	border-color: #F7B20C; 
+	border-style : solid;
+	border-width: 1px;
+	width: 175px;
+	height: 20px;
+	line-height: 20px;
+	border-style: solid;
+}
+
+
+
+.unchanged {
+	border: 0;
+}
+
+.btn {
+	background: url(../images/login_btn.png) no-repeat;
+	width: 84px;
+	height: 31px;
+	line-height: 31px;
+	font:13px "宋体";
+	color: #214079;
+	border: 0;
+	margin: 5px 0;
+}
+
+.btn:hover {
+	background: url(../images/login_btn_.png) no-repeat;
+	width: 84px;
+	height: 31px;
+	line-height: 31px;
+	font:13px "宋体";
+	color: #1656CD;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+}
+
+.btn_reg {
+	background: url(../images/reg_btn.png) no-repeat;
+	width: 84px;
+	height: 31px;
+	line-height: 31px;
+	font:13px "宋体"; 
+	color : #214079;
+	border: 0;
+	margin: 5px 0;
+	color: #214079;
+}
+
+.btn_reg:hover {
+	background: url(../images/reg_btn_.png) no-repeat;
+	width: 84px;
+	height: 31px;
+	line-height: 31px;
+	font:13px "宋体";
+	color: #1656CD;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+}

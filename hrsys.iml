@@ -31,5 +31,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="tomcat" level="project" />
   </component>
 </module>
