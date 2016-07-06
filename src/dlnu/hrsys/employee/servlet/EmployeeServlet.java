@@ -54,6 +54,8 @@ public class EmployeeServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 
 		EmployeeDaoImpl edm;
+		int probation_status;
+		
 		try {
 			edm = new EmployeeDaoImpl();
 	
@@ -109,8 +111,19 @@ public class EmployeeServlet extends HttpServlet {
 			  List list = new ArrayList();		
 			  list = edm.findEmployeeByHire_Id(4);
 			  session.setAttribute("emp_linshi", list);
-			  request.getRequestDispatcher("/index.jsp").forward(request,response); 
+			  request.getRequestDispatcher("/employee/probation.jsp").forward(request,response); 
 		  }
+		  
+		  if("update".equals(flag)) {
+              int id2 = Integer.parseInt(request.getParameter("id"));
+              probation_status = Integer.valueOf(request.getParameter("probation_status")).intValue();
+              if(edm.updEmployee(id2, probation_status)) {
+                  new ArrayList();
+                  List list1 = edm.findEmployeeByHire_Id(4);
+                  request.setAttribute("emp_linshi", list1);
+                  request.getRequestDispatcher("/employee/probation.jsp").forward(request, response);
+              }
+          }
 		  
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block

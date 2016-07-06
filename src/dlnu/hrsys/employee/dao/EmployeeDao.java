@@ -17,4 +17,6 @@ public interface EmployeeDao {
 	//全查。
 	public List findEmployee();
 	public List findEmployeeByHire_Id(int id);
+	
+	public Employee findEmployeeById(int id);
 }
