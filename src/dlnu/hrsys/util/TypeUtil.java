@@ -40,6 +40,10 @@ public class TypeUtil {
 
         return instance;
     }
+    
+    public static String getItemName(int itemId) throws DBUtil.DBException {
+    	return getInstance().getItem(itemId).getName();
+    }
 
     @Nullable
     public TypeItem getItem(int itemId) {
