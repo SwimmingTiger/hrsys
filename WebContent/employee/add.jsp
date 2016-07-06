@@ -27,7 +27,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <script  type='text/javascript'   src='<%=path %>/js/syspanel.js'></script>
 <script type='text/javascript'>panelStylePath.setImagePath('<%=path%>/images/grid_images/');</script>
 <script  type='text/javascript'   src='<%=path %>/js/pcasunzip.js'></script>
- <script language="javascript" type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+ <script language="javascript" type="text/javascript" src="<%=path %>/js/My97DatePicker/WdatePicker.js"></script>
 <style type="text/css">
 	th,td{
 		font-size: 13px;
