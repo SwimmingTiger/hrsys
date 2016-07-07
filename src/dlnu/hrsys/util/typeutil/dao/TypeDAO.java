@@ -80,4 +80,48 @@ public class TypeDAO {
 
         return group;
     }
+    
+	public TypeGroup getLeaveJobs() {
+		TypeGroup group = new TypeGroup();
+
+		try {
+			PreparedStatement itemPst = conn
+					.prepareStatement("SELECT DISTINCT job FROM employee_leave_record");
+			ResultSet itemRs = itemPst.executeQuery();
+
+			while (itemRs.next()) {
+				TypeItem item = new TypeItem();
+				item.setName(itemRs.getString("job"));
+				group.add(item);
+			}
+
+			itemPst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return group;
+	}
+	
+	public TypeGroup getLeaveDepartments() {
+		TypeGroup group = new TypeGroup();
+
+		try {
+			PreparedStatement itemPst = conn
+					.prepareStatement("SELECT DISTINCT department FROM employee_leave_record");
+			ResultSet itemRs = itemPst.executeQuery();
+
+			while (itemRs.next()) {
+				TypeItem item = new TypeItem();
+				item.setName(itemRs.getString("department"));
+				group.add(item);
+			}
+
+			itemPst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return group;
+	}
 }
