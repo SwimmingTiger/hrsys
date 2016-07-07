@@ -167,11 +167,11 @@
 
                         </div>
                         <div>
-                            <div class="gap2" onclick="location.href='job_main.jsp'">
-
+                            <div class="gap2" onclick="location.href='JobServlet?flag=all'">
+                                <!--岗位管理-->
                             </div>
-                            <div class="gap5" onclick="location.href='employee_main.jsp'">
-
+                            <div class="gap5" onclick="location.href='employee/entry.jsp'">
+                                <!--员工管理-->
                             </div>
 
 
@@ -179,7 +179,11 @@
 
                         <div class="gap3">
                             <marquee  direction="up" loop="-1" behavior="scroll"  dataformatas="text" width="250px" height="80x" scrolldelay="500" scrollamount="100px;">
-                                根据中央统战部《关于印发加强党外知识分子联谊会的建设的通知》精神和省市统战部要求，我校拟筹备成立大连民族大学党外知识分子联谊会。根据工作安排，符合会员条件的教师，需填写《大连民族大学党外知识分子联谊会会员登记表》
+                                滚动通知<br>
+                                滚动通知<br>
+                                滚动通知<br>
+                                滚动通知<br>
+                                滚动通知<br>
                             </marquee>
                         </div>
 
@@ -188,21 +192,21 @@
 
 
 
-                    <div class="gap6" onclick="location.href='entry.jsp'">
+                    <div class="gap6" onclick="location.href='employee/add.jsp'">
+                        <!--员工入职-->
+                    </div>
+
+                    <div class="gap7" onclick="location='LeaveServlet.action?flag=sketchy'">
 
                     </div>
 
-                    <div class="gap7" onclick="location.href='resign.jsp'">
+                    <div class="gap8" onclick="alert('该功能还没有做好~~');">
 
 
                     </div>
 
-                    <div class="gap8" onclick="location.href='depart_main.jsp'">
-
-
-                    </div>
-
-                    <div class="gap9"  onclick="location.href='ptable.jsp'">
+                    <div class="gap9"  onclick="alert('该功能还没有做好~~');">
+                        <!--报表-->
                     </div>
                     <div  class="foot" >
                         <p style="color:#ffffff;">版权所有：大连民族大学(2016)</p>

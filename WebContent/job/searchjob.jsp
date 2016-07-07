@@ -74,7 +74,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </td>
 <td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
 <td align="right" style="color:#999999;padding-right: 15px;">
-<a href="<%=path %>" class="" target="_blank">链接</a>&nbsp;&nbsp;
+	<a href="<%=path %>/index.jsp" class="">返回主页</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>
@@ -92,7 +92,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<div id="regtddiv">
 		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体">注意：带有&nbsp;<font color="red">*</font>&nbsp;号的必须填写</div>
 		<fieldset >
-		<legend style="font-family: '宋体';color:#007BBB "><a href="Job.jsp">·点击添加岗位信息</a></legend>
+		<legend style="font-family: '宋体';color:#007BBB "><a href="job/Job.jsp">·点击添加岗位信息</a></legend>
 		<legend style="font-family: '宋体';color:#007BBB ">·查询岗位信息（以下必填一个）</legend>
 		<form method="post" action="<%=path%>/JobServlet?flag=find">
 		<table border="0" style="line-height: 32px; height: 124px" align="center" cellpadding="0" cellspacing="0">

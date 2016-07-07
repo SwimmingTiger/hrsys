@@ -77,7 +77,7 @@ public class JobServlet extends HttpServlet {
 					PrintWriter out1 = response.getWriter();
 					out1.println("<script type='text/javascript'>"
 							+ "alert('添加成功！');"
-							+ "location='job/searchjob.jsp';"
+							+ "location='JobServlet?flag=find';"
 							+ "</script>");
 					out1.println("</HTML>");
 					out1.flush();
@@ -166,7 +166,7 @@ public class JobServlet extends HttpServlet {
 						PrintWriter out1 = response.getWriter();
 						out1.println("<script type='text/javascript'>"
 								+ "alert('您查询的结果不存在！');"
-								+ "location='job/searchjob.jsp';"
+								+ "location='JobServlet?flag=find';"
 								+ "</script>");
 						out1.println("</HTML>");
 						out1.flush();
@@ -215,7 +215,7 @@ public class JobServlet extends HttpServlet {
 							PrintWriter out1 = response.getWriter();
 							out1.println("<script type='text/javascript'>"
 									+ "alert('您查询的结果不存在！');"
-									+ "location='job/searchjob.jsp';"
+									+ "location='JobServlet?flag=find';"
 									+ "</script>");
 							out1.println("</HTML>");
 							out1.flush();

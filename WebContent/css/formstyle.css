@@ -38,6 +38,7 @@ a
 	position:relative;
     width:250px;
 	background-color:#ffffff;
+	opacity:0.5;
 	height:465px;
 	right:-10px;
 }

@@ -69,7 +69,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </td>
 <td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
 <td align="right" style="color:#999999;padding-right: 15px;">
-<a href="<%=path %>" class="" target="_blank">链接</a>&nbsp;&nbsp;
+	<a href="<%=path %>/index.jsp" class="">返回主页</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>

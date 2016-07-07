@@ -117,7 +117,19 @@ position:relative;
 		font-weight: bold;
 		font-family: 宋体;
 }
-	
+	.regbtn{
+		width:142px;
+		height:32px;
+		border:0px;
+		margin:0px;
+		cursor:pointer;
+		background: url("<%=path%>/images/regimages/reg_finish_btn.gif") no-repeat;
+		color: #4d2f00;
+		line-height: 32px;
+		font-size: 14px;
+		font-weight: bold;
+		font-family: 宋体;
+	}
 	.regbtn_hover{
 		width:142px;
 		height:32px;
@@ -145,7 +157,7 @@ position:relative;
 <a href="index.jsp" class="btn btn-primary btn-lg active" role="button" >注销用户</a>&nbsp;&nbsp;
 </td>
 <td>
-<a href="MyJsp.jsp" class="btn btn-primary btn-lg active" role="button" style="margin-right:-60px;">返回主页</a>&nbsp;&nbsp;
+<a href="../index.jsp" class="btn btn-primary btn-lg active" role="button" style="margin-right:-60px;">返回主页</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>
@@ -167,8 +179,10 @@ position:relative;
 			<div>
 		<div class="gap1"> </div>
 		<div class="gap10" ></div>
-		
-		</div>
+				<div class="gap10" style="background: none; position:relative; top: 40px; left: 520px">
+					<input id="returnbtn"  type="button" value="员工列表" onclick="location='../EmployeeServlet?flag=list_all'" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
+				</div>
+				</div>
 		<div>
 	
 	

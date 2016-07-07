@@ -113,6 +113,13 @@ public class EmployeeServlet extends HttpServlet {
 			  session.setAttribute("emp_linshi", list);
 			  request.getRequestDispatcher("/employee/probation.jsp").forward(request,response); 
 		  }
+
+			if("list_all".equals(flag)){
+				List list = new ArrayList();
+				list = edm.findEmployeeByHire_Id(5);
+				session.setAttribute("emp_list", list);
+				request.getRequestDispatcher("/employee/list.jsp").forward(request,response);
+			}
 		  
 		  if("update".equals(flag)) {
               int id2 = Integer.parseInt(request.getParameter("id"));

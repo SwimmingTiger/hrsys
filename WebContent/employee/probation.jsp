@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
 <td align="right" style="color:#999999;padding-right: 15px;">
-<a href="<%=path %>" class="" target="_blank">链接</a>&nbsp;&nbsp;
+<a href="<%=path %>/index.jsp" class="">返回主页</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>
@@ -110,18 +110,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<br/>
 		
 		<fieldset>
-		<legend  style="font-family: '宋体';color:#D0410A "></legend>
-		<div style="overflow: hidden;">
-		
-		</div>
-		</fieldset>
-		<br/>
-		
-		<fieldset>
 		<legend style="font-family: '宋体';color:#007BBB "></legend>
-		<div>
-		
-		
+		<div style="text-align: center; height: 50px">
+			<input id="returnbtn"  type="button" value="返回" onclick="history.back()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 		</div>
 		</fieldset>
 		<br/>
