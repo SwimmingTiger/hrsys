@@ -129,7 +129,7 @@ public class LeaveServlet extends HttpServlet {
 					request.setAttribute("sketchy", al);
 					request.getRequestDispatcher("/leave/Sketchy.jsp").forward(request, response);
 				} else {
-					response.sendRedirect("./leave/LeaveAdd.jsp");
+					response.sendRedirect("./leave/LeaveAdd.jsp?employee_id=" + l.getEmployee_id());
 				}
 			}
 			

@@ -70,7 +70,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center" >
 <tr>
 <td width="110">
-<img src="../images/dlnu1.png" border="0" height="45"/>
+<img src="<%=path %>/images/dlnu1.png" border="0" height="45"/>
 </td>
 <td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
 <td align="right" style="color:#999999;padding-right: 15px;">

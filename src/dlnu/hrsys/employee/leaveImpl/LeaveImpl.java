@@ -39,8 +39,7 @@ public class LeaveImpl implements LeaveDao{
 						+ "domicile_place, education_status, degree, graduate_school, major_name,"
 						+ "graduate_date) values(?,?,?,?,?,?,?,?,?,?,?,?,"
 						+ "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-				//pstmt2 = conn.prepareStatement("delete from employee where id = ?");
-				//pstmt.setObject(1, null);
+				pstmt2 = conn.prepareStatement("delete from employee where id = ?");
 				pstmt.setDate(1, l.getLeave_time());
 				pstmt.setInt(2, l.getLeave_reason_id());
 				pstmt.setString(3, l.getDestination());
@@ -70,9 +69,9 @@ public class LeaveImpl implements LeaveDao{
 				pstmt.setString(27, l.getGraduate_school());
 				pstmt.setString(28, l.getMajor_name());
 				pstmt.setDate(29, l.getGraduate_date());
-				//pstmt2.setInt(1, l.getEmployee_id());
+				pstmt2.setInt(1, l.getEmployee_id());
 				pstmt.executeUpdate();
-				//pstmt2.executeUpdate();
+				pstmt2.executeUpdate();
 				flag = true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

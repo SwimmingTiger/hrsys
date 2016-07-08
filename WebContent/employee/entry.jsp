@@ -180,7 +180,7 @@ position:relative;
 		<div class="gap1"> </div>
 		<div class="gap10" ></div>
 				<div class="gap10" style="background: none; position:relative; top: 40px; left: 520px">
-					<input id="returnbtn"  type="button" value="员工列表" onclick="location='../EmployeeServlet?flag=list_all'" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
+					<input id="returnbtn"  type="button" value="正式员工列表" onclick="location='../EmployeeServlet?flag=list_all'" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 				</div>
 				</div>
 		<div>

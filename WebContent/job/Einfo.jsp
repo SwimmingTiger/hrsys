@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="dlnu.hrsys.util.TypeUtil" import="dlnu.hrsys.util.type.entity.*" %>
 <%
 String path = request.getContextPath();
 
 String ptname = "员工管理平台";
 
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+request.setAttribute("typeUtil", TypeUtil.getInstance());
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -71,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
 <td align="right" style="color:#999999;padding-right: 15px;">
-<a href="<%=path %>" class="" target="_blank">链接</a>&nbsp;&nbsp;
+	<a href="<%=path %>/index.jsp" class="">返回主页</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>
@@ -103,14 +106,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th style="text-align:center;width: 150px">人员来源</th>
           </tr>
           
-        <c:forEach items="" var="">
+        <c:forEach items="${allEmp}" var="emp">
 		<tr>
+		<td style="text-align:center;">${emp.id}</td>
+		<td style="text-align:center;">${emp.name}</td>
+		<td style="text-align:center;">${typeUtil.getItemName(emp.sex_id)}</td>
+		<td style="text-align:center;">${emp.join_date}</td>
 		<td style="text-align:center;"></td>
-		<td style="text-align:center;"></td>
-		<td style="text-align:center;"></td>
-		<td style="text-align:center;"></td>
-		<td style="text-align:center;"></td>
-		<td style="text-align:center;"></td>
+		<td style="text-align:center;">${typeUtil.getItemName(emp.hr_type_id)}</td>
 		</c:forEach>
 		</tr>
       </table>

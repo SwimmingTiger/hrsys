@@ -202,9 +202,10 @@ public class JobServlet extends HttpServlet {
 			case"find_emp":
 				EmployeeDaoImpl edm = new EmployeeDaoImpl();
 				int job_id = Integer.valueOf(request.getParameter("uid"));
-				 list=edm.findEmployeeByHire_Id(job_id);
+				 list=edm.findEmployeeByJobId(job_id);
 				 if(list!=null && !list.isEmpty()){
 					 request.setAttribute("allEmp", list);
+					 System.out.println(list);
 					 request.getRequestDispatcher("job/Einfo.jsp").forward(request,response);
 					
 					}else{
