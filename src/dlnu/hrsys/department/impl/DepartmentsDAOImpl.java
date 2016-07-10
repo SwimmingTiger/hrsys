@@ -89,9 +89,15 @@ public class DepartmentsDAOImpl implements DepartmentsDAO {
 				pstmt.setString(3, department.getPhone());
 				pstmt.setString(4, department.getFax());
 				pstmt.setString(5, department.getDesc());
-				pstmt.setInt(6, department.getParentId());
+				if (department.getParentId() == 0) {
+					pstmt.setObject(6, null);
+				} else {
+					pstmt.setInt(6, department.getParentId());
+				}
 				pstmt.setDate(7, department.getFoundDate());
 				pstmt.setInt(8, department.getId());
+				String sql = "UPDATE `department` SET `name`="+department.getName()+",`type_id`="+department.getTypeId()+",`phone`="+department.getPhone()+",`fax`="+department.getFax()+",`desc`="+department.getDesc()+",`parent_id`="+department.getParentId()+",`birth_date`="+department.getFoundDate()+" WHERE id="+department.getId()+"";
+				System.out.print(sql);
 				int num = pstmt.executeUpdate();
 				
 				//判断添加是否成功
@@ -103,7 +109,7 @@ public class DepartmentsDAOImpl implements DepartmentsDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-
+		System.out.print(flag);
 		return flag;
 	}
 	public Department findDepById(int departmentId)

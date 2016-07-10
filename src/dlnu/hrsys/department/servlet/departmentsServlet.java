@@ -82,13 +82,14 @@ public class departmentsServlet extends HttpServlet {
 						String dfax = request.getParameter("fax");
 						String ddesc = request.getParameter("des");
 						int dparentId = 0;
+						Date ddate = Date.valueOf(request.getParameter("date"));
 						try {
 							dparentId = Integer.valueOf(request.getParameter("parentId"));
 						}
 						catch (Exception ex) {
 							// ignore
 						}
-						Date ddate = Date.valueOf(request.getParameter("date"));
+						
 						
 						Department d = new Department();
 						d.setName(dname);
@@ -129,11 +130,63 @@ public class departmentsServlet extends HttpServlet {
 						{
 							//重定向 转入成功页面
 							System.out.print("success");
+							List all = new ArrayList();
+							all = dD.findAll();	
+							request.setAttribute("alldepartments", all);
 							request.getRequestDispatcher("/departments/departmentTable.jsp").forward(
 									request, response);
 						}else{
 							//转发 
 							System.out.print("fail");
+						}
+						
+						break;
+					}
+					case "upd":
+					{
+						System.out.print("this is upd ");						
+						Department d = new Department();
+						
+						int did = Integer.valueOf(request.getParameter("id"));
+						String dname = request.getParameter("name");
+						int dtypeId = Integer.valueOf(request.getParameter("typeId"));
+						String dphone = request.getParameter("phone");
+						String dfax = request.getParameter("fax");
+						String ddesc = request.getParameter("desc");
+						Date ddate = Date.valueOf(request.getParameter("foundDate"));
+						
+						int dparentId = 0;
+						try {
+							dparentId = Integer.valueOf(request.getParameter("parentId"));
+						}
+						catch (Exception ex) {
+							// ignore
+						}						
+						
+						d.setId(did);
+						d.setName(dname);
+						d.setTypeId(dtypeId);
+						d.setPhone(dphone);
+						d.setFax(dfax);
+						d.setDesc(ddesc);
+						d.setParentId(dparentId);
+						d.setFoundDate(ddate);
+						
+						System.out.print("   id is: ");
+						System.out.print(did);
+						
+						boolean bool = dD.chaDepartment(d);
+						
+						if(bool)
+						{
+							List all = new ArrayList();
+							all = dD.findAll();	
+							request.setAttribute("alldepartments", all);
+							request.getRequestDispatcher("/departments/departmentTable.jsp").forward(
+									request, response);
+						}else {
+							
+							System.out.print("there is a fail in your changing");
 						}
 						
 						break;
@@ -173,7 +226,11 @@ public class departmentsServlet extends HttpServlet {
 					}
 					default:
 					{
-						
+						List all = new ArrayList();
+						all = dD.findAll();	
+						request.setAttribute("alldepartments", all);
+						request.getRequestDispatcher("/departments/departmentTable.jsp").forward(
+								request, response);
 					}
 			}
 		} catch (DBException e) {

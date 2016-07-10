@@ -74,11 +74,10 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </td>
 <td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
 <td align="right" style="color:#999999;padding-right: 15px;">
-<a href="<%=path %>" class="" target="_blank">链接</a>&nbsp;&nbsp;
+	<a href="<%=path %>/index.jsp" class="">返回主页</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>
-<input type="hidden" name="methods" id="methods">
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center">
 <tr height="57">
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
@@ -178,16 +177,6 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</fieldset>
 		<br/>
 		
-		<fieldset>
-		<legend style="font-family: '宋体';color:#007BBB "></legend>
-		<div>
-		
-		<div style="height: 80px;text-align: center;vertical-align: middle;">
-		<input id="subbtn"  type="button" value="确定" onclick="subcompanyreg()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
-		</div>
-		</div>
-		</fieldset>
-		<br/>
 		</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_right.jpg"></td>

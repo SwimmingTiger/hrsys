@@ -179,7 +179,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		
 		<div style="height: 80px;text-align: center;vertical-align: middle;">
 		<input id="subbtn"  type="submit" value="确定" onclick="" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
-		<input id="subbtn"  type="button" value="返回" onclick="history.back()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
+		<a href="../servlet/departmentsServlet.action?flag=allDepartments"><input id="subbtn"  type="button" value="返回"  style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'"></a>
 		</div>
 		</div>
 		</fieldset>

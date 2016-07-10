@@ -53,9 +53,9 @@ public class testDepartment {
 		
 		
 		//测试chaDepartment功能
-	/*	try {
+		try {
 			Date date = Date.valueOf("2016-6-30");
-			Department d = new Department(9,"财务部", 38, "15635152688", "52", "钱很多", 5, date);
+			Department d = new Department(3,"财务部", 38, "15635152688", "52", "钱很多", 5, date);
 			DepartmentsDAO dD = departmentsDAOFactory.getsDepartmentsDAO();
 			boolean flag = dD.chaDepartment(d);
 			System.out.print(d.getId());
@@ -67,7 +67,7 @@ public class testDepartment {
 			}
 		} catch (DBException e) {
 			e.printStackTrace();
-		}*/
+		}
 		
 		
 		//测试findDepById 功能
@@ -130,7 +130,7 @@ public class testDepartment {
 		}*/
 		
 		//测试findBySql 功能
-		try {
+		/*try {
 			String sql = "SELECT `name`, `type_id`, `phone`, `fax`, `desc`, `parent_id`, `birth_date` FROM `department` where 1  and name like '%人事部%' and type_id=38";
 			List list = new ArrayList();
 			DepartmentsDAO dD = departmentsDAOFactory.getsDepartmentsDAO();
@@ -145,6 +145,6 @@ public class testDepartment {
 			}
 		} catch (DBException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 }
