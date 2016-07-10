@@ -136,13 +136,7 @@
                         </div>
 
                         <div class="gap3">
-                            <marquee  direction="up" loop="-1" behavior="scroll"  dataformatas="text" width="250px" height="80x" scrolldelay="500" scrollamount="100px;">
-                                滚动通知<br>
-                                滚动通知<br>
-                                滚动通知<br>
-                                滚动通知<br>
-                                滚动通知<br>
-                            </marquee>
+                            <jsp:include page="info_box.jsp" />
                         </div>
 
                     </div>
