@@ -166,10 +166,6 @@
                     <div class="gap9"  onclick="location='servlet/departmentsServlet.action?flag=allDepartment'">
                         <!--报表-->
                     </div>
-                    <div  class="foot" >
-                        <p style="color:#ffffff;">版权所有：大连民族大学(2016)</p>
-                        <p style="color:#ffffff;">制作小组：</p>
-                    </div>
 
                 </div>
 
