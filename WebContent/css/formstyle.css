@@ -9,6 +9,7 @@ a
 	cursor:pointer;
 }
 
+
 .div_a
 {
 	position:relative;
@@ -99,7 +100,7 @@ a
 {
 	position:relative;
 	width:180px;
-	background:url(../images/eme2.png) no-repeat;
+	background:url(../images/eme1.png) no-repeat;
 	height:80px;
 	float:right;
 	left:-150px;
@@ -124,7 +125,7 @@ a
 .gap5
 {
 	position:relative;
-    background:url(../images/eme1.png) no-repeat;
+    background:url(../images/eme2.png) no-repeat;
 	width:180px;
 	height:82px;
 	float:right;
@@ -161,7 +162,7 @@ a
 	height:80px;
 	top:-792px;
 	left:660px;
-	 background:url(../images/eme6.png) no-repeat;
+	 background:url(../images/eme4.png) no-repeat;
 	
 }
 .gap9
@@ -171,7 +172,7 @@ a
 	height:80px;
 	top:-1010px;
 	left:660px;
-	 background:url(../images/eme4.png) no-repeat;
+	 background:url(../images/eme6.png) no-repeat;
 	
 	
 	
@@ -182,9 +183,9 @@ a
 	position:relative;
 	width:220px;
 	height:82px;
-	top:-730px;
-	left:490px;
-	 background:url(../images/s2.png) no-repeat;
+	top:-780px;
+	left:500px;
+	 background:url(../images/yg2.png) no-repeat;
 }
 
 .entry2
@@ -192,10 +193,19 @@ a
 	position:relative;
 	width:220px;
 	height:80px;
-	top:-940px;
-	left:480px;
-	 background:url(../images/s1.png) no-repeat;
+	top:-960px;
+	left:500px;
+	 background:url(../images/yg3.png) no-repeat;
 	
+}
+.entry3
+{
+	position:relative;
+	width:220px;
+	height:80px;
+	top:-840px;
+	left:500px;
+	 background:url(../images/yg1.png) no-repeat;
 }
 
 .foot
@@ -227,7 +237,7 @@ a
 	width:956px;
 	height:80px;
 	background-color: #006291;
-	top:-620px;
+	top:-697px;
 	left:-5px;
 	text-align:center;
 }

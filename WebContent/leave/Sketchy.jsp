@@ -4,7 +4,7 @@
 <%
 String path = request.getContextPath();
 
-String ptname = "员工管理平台";
+String ptname = "人事管理平台";
 
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
@@ -28,9 +28,17 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <script type='text/javascript'>panelStylePath.setImagePath('<%=path%>/images/grid_images/');</script>
 <script  type='text/javascript'   src='<%=path %>/js/pcasunzip.js'></script>
  <script language="javascript" type="text/javascript" src="<%=path %>/js/My97DatePicker/WdatePicker.js"></script>
+ <link href="css/bootstrap.css" rel="stylesheet">
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery-1.10.2.js"></script>
 <style type="text/css">
 	th,td{
 		font-size: 13px;
+		
+	}
+	.infor_th
+	{
+	text-align:center;
 	}
 	.regbtn{
 		width:142px;
@@ -58,18 +66,56 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		font-weight: bold;
 		font-family: 宋体;
 	}
+	
+.newBtn {
+	color: #fff;
+	background-color: #286090;
+	width: 84px;
+	height: 31px;
+	font: 13px "宋体";
+	border: 0;
+	margin: 5px 0;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+	border-radius: 6px;
+	display: inline-block;
+	text-decoration: none;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.newBtn:hover {
+	background: url(<%=path%>/images/login_btn_.png) no-repeat;
+	width: 84px;
+	height: 31px;
+	line-height: 31px;
+	font: 13px "宋体";
+	color: #1656CD;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+}
 </style>
 </head>
 <body>
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center" height="70">
 <tr height="70">
 <td width="110">
-<img src="<%=path %>
-" border="0" height="45"/>
+<img src="<%=path %>/images/dlnu1.png" border="0" height="45"/>
 </td>
 <td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
 <td align="right" style="color:#999999;padding-right: 15px;">
-	<a href="<%=path %>/index.jsp" class="">返回主页</a>&nbsp;&nbsp;
+	<a href="index.jsp" class="newBtn" role="button"style="font-size:12px" >注销用户</a>&nbsp;&nbsp;
+	
+<a href="index.jsp" class="newBtn" role="button" style="font-size:12px">返回主页</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>
@@ -77,7 +123,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <tr height="57">
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">离职员工信息。</div>
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_title3.jpg"></td>
 </tr>
@@ -126,20 +172,20 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</td></tr></table-->
 		</form>
 		<br>
-		<table border="1" style="line-height: 32px;" width="800" align="center" cellpadding="1" cellspacing="1">
+		<table  class="table"   style="line-height: 32px;" width="800" align="center" cellpadding="1" cellspacing="1">
 		<tr>
-<th width="60px">员工编号</th><th width="70px">姓名</th><th>部门名称</th><th>岗位名称</th><th>离职类型</th><th>离职时间</th><th>离职去向</th><th width="120px">操作</th>
+<th class="infor_th">员工编号</th><th class="infor_th"  style=width:70px;>姓名</th><th class="infor_th">部门名称</th><th class="infor_th">岗位名称</th><th class="infor_th">离职类型</th><th class="infor_th">离职时间</th><th class="infor_th">离职去向</th><th width="120px" class="infor_th">操作</th>
 </tr>
 <c:forEach items="${sketchy}" var="leave">
 <tr>
 <c:if test="${param.edit_id != leave.id}">
-<td>${leave.employee_id}</td>
-<td>${leave.name}</td>
-<td>${leave.department}</td>
-<td>${leave.job}</td>
-<td>${typeUtil.getItemName(leave.leave_reason_id)}</td>
-<td>${leave.leave_time}</td>
-<td>${leave.destination}</td>
+<td align="center">${leave.employee_id}</td>
+<td align="center">${leave.name}</td>
+<td align="center">${leave.department}</td>
+<td align="center">${leave.job}</td>
+<td align="center">${typeUtil.getItemName(leave.leave_reason_id)}</td>
+<td align="center">${leave.leave_time}</td>
+<td align="center">${leave.destination}</td>
 <td align="center">
 	<a href="LeaveServlet.action?flag=sketchy&edit_id=${leave.id}">修改</a>
 	||
@@ -149,19 +195,19 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <c:if test="${param.edit_id == leave.id}">
 <form method="post" action="LeaveServlet.action?flag=upd">
 <input type="hidden" name="id" value="${leave.id}">
-<td>${leave.employee_id}</td>
-<td>${leave.name}</td>
-<td>${leave.department}</td>
-<td>${leave.job}</td>
-<td>
+<td align="center">${leave.employee_id}</td>
+<td align="center">${leave.name}</td>
+<td align="center">${leave.department}</td>
+<td align="center">${leave.job}</td>
+<td align="center">
 	<select name="leave_reason_id" style="width:120px">
    		<c:forEach items="${typeUtil.leaveReasonGroup}" var="item">
 			<option value="${item.id}" <c:if test="${item.id == leave.leave_reason_id}">selected="selected"</c:if>>${item.name}</option>
 		</c:forEach>
 	</select>
 </td>
-<td><input name="leave_time" type="text" value="${leave.leave_time}" style="width:80px"></td>
-<td><input name="destination" type="text" value="${leave.destination}"></td>
+<td align="center"><input name="leave_time" type="text" value="${leave.leave_time}" style="width:80px"></td>
+<td align="center"><input name="destination" type="text" value="${leave.destination}"></td>
 <td align="center"><input type="submit" value="保存"> || <a href="LeaveServlet.action?flag=sketchy">取消</a></td>
 </form>
 </c:if>
@@ -201,16 +247,9 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </tr>
 </table>
 
-<center>
-<table>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">版权所有: 大连民族大学(c)2016</td>
-</tr>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">网址：<a href="">aaa</a></td>
-</tr>
 
-</table>
+<center>
+<jsp:include page="../foot.jsp"></jsp:include>
 </center>
 
 </body>

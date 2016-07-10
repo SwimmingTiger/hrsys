@@ -4,7 +4,7 @@
 <%
 String path = request.getContextPath();
 
-String ptname = "员工管理平台";
+String ptname = "人事管理平台";
 
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
@@ -28,6 +28,9 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <script type='text/javascript'>panelStylePath.setImagePath('<%=path%>/images/grid_images/');</script>
 <script  type='text/javascript'   src='<%=path %>/js/pcasunzip.js'></script>
  <script language="javascript" type="text/javascript" src="<%=path %>/js/My97DatePicker/WdatePicker.js"></script>
+ <link href="css/bootstrap.css" rel="stylesheet">
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery-1.10.2.js"></script>
 <style type="text/css">
 	th,td{
 		font-size: 13px;
@@ -58,6 +61,42 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		font-weight: bold;
 		font-family: 宋体;
 	}
+	.newBtn {
+	color: #fff;
+	background-color: #286090;
+	width: 84px;
+	height: 31px;
+	font: 13px "宋体";
+	border: 0;
+	margin: 5px 0;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+	border-radius: 6px;
+	display: inline-block;
+	text-decoration: none;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.newBtn:hover {
+	background: url(<%=path%>/images/login_btn_.png) no-repeat;
+	width: 84px;
+	height: 31px;
+	line-height: 31px;
+	font: 13px "宋体";
+	color: #1656CD;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+}
 		
 </style>
 </head>
@@ -74,7 +113,9 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </td>
 
 <td align="right" style="color:#999999;padding-right: 15px;">
-    <a href="<%=path %>/index.jsp" class="">返回主页</a>&nbsp;&nbsp;
+<a href="index.jsp" class="newBtn" role="button"style="font-size:12px" >注销用户</a>&nbsp;&nbsp;
+	
+<a href="../index.jsp" class="newBtn" role="button" style="font-size:12px">返回主页</a>&nbsp;&nbsp;
 </td>
 
 </tr>
@@ -91,7 +132,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
 
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关申请信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。
 </div>
 
 </td>
@@ -402,28 +443,18 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 
 		
 		</table>
-		</div>
-		</fieldset>
-		<br/>
-		
-		<fieldset>
-		<legend  style="font-family: '宋体';color:#D0410A "></legend>
-		<div style="overflow: hidden;">
-		
-		</div>
-		</fieldset>
-		<br/>
-		
-		<fieldset>
-		<legend style="font-family: '宋体';color:#007BBB "></legend>
-		<div>
-		
 		<div style="height: 80px;text-align: center;vertical-align: middle;">
 			<input id="subbtn"  type="submit" value="确定" onclick="subcompanyreg()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 			<input id="returnbtn"  type="button" value="返回" onclick="history.back()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 		</div>
 		</div>
 		</fieldset>
+		<br/>
+		
+
+		
+		
+		
 		<br/>
 		</div>
 </td>
@@ -440,15 +471,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </form>
 
 <center>
-<table>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">版权所有: 大连民族大学(c)2016</td>
-</tr>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">网址：<a href="">aaa</a></td>
-</tr>
-
-</table>
+<jsp:include page="../foot.jsp"></jsp:include>
 </center>
 
 </body>

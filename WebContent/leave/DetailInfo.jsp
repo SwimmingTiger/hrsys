@@ -4,7 +4,7 @@
 <%
 	String path = request.getContextPath();
 
-	String ptname = "员工管理平台";
+	String ptname = "人事管理平台";
 
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
@@ -37,6 +37,9 @@
 	src="<%=path%>/dwr/interface/dwrSysProcessService.js"></script>
 <script language="javascript" type="text/javascript"
 	src="My97DatePicker/WdatePicker.js"></script>
+	 <link href="css/bootstrap.css" rel="stylesheet">
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery-1.10.2.js"></script>
 <style type="text/css">
 th,td {
 	font-size: 13px;
@@ -71,6 +74,42 @@ th,td {
 	font-weight: bold;
 	font-family: 宋体;
 }
+.newBtn {
+	color: #fff;
+	background-color: #286090;
+	width: 84px;
+	height: 31px;
+	font: 13px "宋体";
+	border: 0;
+	margin: 5px 0;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+	border-radius: 6px;
+	display: inline-block;
+	text-decoration: none;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.newBtn:hover {
+	background: url(<%=path%>/images/login_btn_.png) no-repeat;
+	width: 84px;
+	height: 31px;
+	line-height: 31px;
+	font: 13px "宋体";
+	color: #1656CD;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+}
 </style>
 </head>
 <body style="background:url(../images/bg11.jpg)">
@@ -88,7 +127,7 @@ th,td {
 	</table>
 	<form method="post" name="" action="">
 		<input type="hidden" name="methods" id="methods">
-		<table border="0" cellpadding="0" cellspacing="0" width="966"
+		<table class="table" cellpadding="0" cellspacing="0" width="966"
 			align="center">
 			<tr height="57">
 				<td width="9"
@@ -97,7 +136,7 @@ th,td {
 					background="<%=path%>/images/regimages/reg_title2.jpg"
 					style="line-height: 57px;text-indent: 45px;">
 					<div
-						style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">离职员工详细信息。</div>
+						style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。</div>
 				</td>
 				<td width="13"
 					background="<%=path%>/images/regimages/reg_title3.jpg"></td>
@@ -367,19 +406,10 @@ th,td {
 	</form>
 
 
-	<center>
-		<table>
-			<tr>
-				<td style="color:#0;font-size: 12px;" align="center">版权所有:
-					大连民族大学(c)2016</td>
-			</tr>
-			<tr>
-				<td style="color:#0;font-size: 12px;" align="center">网址：<a
-					href="">aaa</a></td>
-			</tr>
-
-		</table>
-	</center>
+	
+<center>
+<jsp:include page="../foot.jsp"></jsp:include>
+</center>
 
 </body>
 </html>

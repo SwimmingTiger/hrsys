@@ -3,7 +3,7 @@
 <%
 String path = request.getContextPath();
 
-String ptname = "员工管理平台";
+String ptname = "人事管理平台";
 
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
@@ -25,6 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type='text/javascript'>panelStylePath.setImagePath('<%=path%>/images/grid_images/');</script>
 <script  type='text/javascript'   src='<%=path %>/js/pcasunzip.js'></script>
  <script language="javascript" type="text/javascript" src="<%=path %>/js/My97DatePicker/WdatePicker.js"></script>
+ <link href="css/bootstrap.css" rel="stylesheet">
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery-1.10.2.js"></script>
 <style type="text/css">
 	th,td{
 		font-size: 13px;
@@ -55,9 +58,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		font-weight: bold;
 		font-family: 宋体;
 	}
+	.newBtn {
+	color: #fff;
+	background-color: #286090;
+	width: 84px;
+	height: 31px;
+	font: 13px "宋体";
+	border: 0;
+	margin: 5px 0;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+	border-radius: 6px;
+	display: inline-block;
+	text-decoration: none;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.newBtn:hover {
+	background: url(<%=path%>/images/login_btn_.png) no-repeat;
+	width: 84px;
+	height: 31px;
+	line-height: 31px;
+	font: 13px "宋体";
+	color: #1656CD;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+}
+
+#info_table th {
+	text-align: center;
+}
 </style>
 </head>
-<body style="background:url(../images/bg11.jpg)">
+<body>
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center" height="70">
 <tr height="70">
 <td width="110">
@@ -65,11 +108,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </td>
 <td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
 <td align="right" style="color:#999999;padding-right: 15px;">
-<a href="<%=path %>/index.jsp" class="">返回主页</a>&nbsp;&nbsp;
+<a href="index.jsp" class="newBtn" role="button"style="font-size:12px" >注销用户</a>&nbsp;&nbsp;
+	
+<a href="../index.jsp" class="newBtn" role="button" style="font-size:12px">返回主页</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>
-<table border="0" cellpadding="0" cellspacing="0" width="966" align="center">
+<table id="info_table" cellpadding="0" cellspacing="0" width="966" align="center">
 <tr height="57">
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
@@ -85,22 +130,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<fieldset>
 		<legend style="font-family: '宋体';color:#007BBB ">试用期信息</legend>
 		<div>
-		<table border="1" style="line-height: 32px;" width="700" align="center" cellpadding="1" cellspacing="1">
+		<table class="table"  style="line-height: 32px;" width="700" align="center" cellpadding="1" cellspacing="1">
 		<tr>
 <th>员工编号</th><th>姓名</th><th>员工状态</th><th>操作</th>
 </tr>
 <c:forEach items="${emp_linshi}" var="emp">
 <form action="/hrsys/EmployeeServlet?flag=update&id=${emp.id}" method="post">
 <tr>
-<td>${emp.id}</td>
-<td>${emp.name}</td>
+<td align="center">${emp.id}</td>
+<td align="center">${emp.name}</td>
 <td align="center"><SELECT name="probation_status" id="probation_status">
 				 <option value="5" selected>转正</option>
 				 <option value="4">延期</option>
 				 <option value="3">不予录用</option>
 		</SELECT></td>
-		<td>
-		<input	type="submit" value="确定">
+		<td align="center">
+		<input	type="submit" value="确定" >
 		</td>
 </tr></form>
 </c:forEach>
@@ -128,16 +173,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </table>
 </form>
 
-<center>
-<table>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">版权所有: 大连民族大学(c)2016</td>
-</tr>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">网址：<a href="">aaa</a></td>
-</tr>
 
-</table>
+<center>
+<jsp:include page="../foot.jsp"></jsp:include>
 </center>
 
 </body>

@@ -164,18 +164,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </table>
 </form>
 
+
 <center>
-<table>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">版权所有: 大连民族大学(c)2016</td>
-</tr>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">网址：<a href="">aaa</a></td>
-</tr>
-
-</table>
+<jsp:include page="../foot.jsp"></jsp:include>
 </center>
-
 </body>
 </html>
 

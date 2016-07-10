@@ -4,7 +4,7 @@
 <%
 String path = request.getContextPath();
 
-String ptname = "员工管理平台";
+String ptname = "人事管理平台";
 
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
@@ -61,6 +61,42 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		font-weight: bold;
 		font-family: 宋体;
 	}
+	.newBtn {
+	color: #fff;
+	background-color: #286090;
+	width: 84px;
+	height: 31px;
+	font: 13px "宋体";
+	border: 0;
+	margin: 5px 0;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+	border-radius: 6px;
+	display: inline-block;
+	text-decoration: none;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.newBtn:hover {
+	background: url(<%=path%>/images/login_btn_.png) no-repeat;
+	width: 84px;
+	height: 31px;
+	line-height: 31px;
+	font: 13px "宋体";
+	color: #1656CD;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	border: 0;
+	margin: 5px 0;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+}
 </style>
 <link href="css/bootstrap.css" rel="stylesheet">
 <script src="js/bootstrap.js"></script>
@@ -74,7 +110,9 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </td>
 <td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
 <td align="right" style="color:#999999;padding-right: 15px;">
-	<a href="<%=path %>/index.jsp" class="">返回主页</a>&nbsp;&nbsp;
+	<a href="index.jsp" class="newBtn" role="button"style="font-size:12px" >注销用户</a>&nbsp;&nbsp;
+	
+<a href="index.jsp" class="newBtn" role="button" style="font-size:12px">返回主页</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>
@@ -131,17 +169,11 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </table>
 </form>              
 
-<center>
-<table>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">版权所有: 大连民族大学(c)2016</td>
-</tr>
-<tr>
-<td> style="color:#0;font-size: 12px;" align="center">网址：<a href="">http://www.dlnu.edu.cn</a></td>
-</tr>
 
-</table>
+<center>
+<jsp:include page="../foot.jsp"></jsp:include>
 </center>
+
 
 </body>
 </html>

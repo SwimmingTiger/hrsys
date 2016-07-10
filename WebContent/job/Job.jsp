@@ -142,16 +142,9 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </table>
 </form>              
 
-<center>
-<table>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">版权所有: 大连民族大学(c)2016</td>
-</tr>
-<tr>
-<td> style="color:#0;font-size: 12px;" align="center">网址：<a href="">http://www.dlnu.edu.cn</a></td>
-</tr>
 
-</table>
+<center>
+<jsp:include page="../foot.jsp"></jsp:include>
 </center>
 
 </body>
