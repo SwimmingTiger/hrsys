@@ -118,56 +118,17 @@
             <td width="9" background="<%=path %>/images/regimages/reg_left.jpg"></td>
             <td width="944">
                 <div class="div_a">
-                    <div>
-                        <div>
-                            <div class="gap1"> </div>
-                            <div class="gap10" ></div>
-
-                        </div>
-                        <div>
-                            <div class="gap2" onclick="location.href='employee/entry.jsp'">
-                                <!--岗位管理-->
-                            </div>
-                            <div class="gap5" onclick="location.href='JobServlet?flag=all'">
-                                <!--员工管理-->
-                            </div>
-
-
-                        </div>
-
-                        <div class="gap3">
-                            <jsp:include page="info_box.jsp" />
-                        </div>
-
+                    <div class="gap_box_left">
+                        <jsp:include page="info_box.jsp" />
                     </div>
-                    <div class="gap4"></div>
-
-
-
-                    <div class="gap6" onclick="location.href='employee/add.jsp'">
-                        <!--员工入职-->
+                    <div class="gap_box_right gap_icons">
+                        <div class="gap2" onclick="location.href='employee/entry.jsp'"></div>
+                        <div class="gap5" onclick="location.href='JobServlet?flag=all'"></div>
+                        <div class="gap6" onclick="location.href='employee/add.jsp'"></div>
+                        <div class="gap9"  onclick="location='servlet/departmentsServlet.action?flag=allDepartment'"></div>
+                        <div class="gap7" onclick="location='LeaveServlet.action?flag=sketchy'"></div>
+                        <div class="gap8" onclick="alert('该功能还没有做好~~');"></div>
                     </div>
-
-                    <div class="gap7" onclick="location='LeaveServlet.action?flag=sketchy'">
-
-                    </div>
-
-                    <div class="gap8" onclick="alert('该功能还没有做好~~');">
-
-
-                    </div>
-
-                    <div class="gap9"  onclick="location='servlet/departmentsServlet.action?flag=allDepartment'">
-                        <!--报表-->
-                    </div>
-
-                </div>
-
-
-
-
-
-
                 </div>
             </td>
             <td width="13" background="<%=path %>/images/regimages/reg_right.jpg"></td>

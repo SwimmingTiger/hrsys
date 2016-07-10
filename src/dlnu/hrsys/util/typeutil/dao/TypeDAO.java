@@ -60,7 +60,7 @@ public class TypeDAO {
                 group.setId(groupId);
                 group.setName(rs.getString("name"));
 
-                PreparedStatement itemPst = conn.prepareStatement("SELECT * FROM type_item WHERE group_id = ?");
+                PreparedStatement itemPst = conn.prepareStatement("SELECT * FROM type_item WHERE group_id = ? ORDER BY id ASC");
                 itemPst.setInt(1, groupId);
                 ResultSet itemRs = itemPst.executeQuery();
 
@@ -86,7 +86,7 @@ public class TypeDAO {
 
 		try {
 			PreparedStatement itemPst = conn
-					.prepareStatement("SELECT DISTINCT job FROM employee_leave_record");
+					.prepareStatement("SELECT DISTINCT job FROM employee_leave_record ORDER BY id ASC");
 			ResultSet itemRs = itemPst.executeQuery();
 
 			while (itemRs.next()) {
@@ -108,7 +108,7 @@ public class TypeDAO {
 
 		try {
 			PreparedStatement itemPst = conn
-					.prepareStatement("SELECT DISTINCT department FROM employee_leave_record");
+					.prepareStatement("SELECT DISTINCT department FROM employee_leave_record ORDER BY id ASC");
 			ResultSet itemRs = itemPst.executeQuery();
 
 			while (itemRs.next()) {

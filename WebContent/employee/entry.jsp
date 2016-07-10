@@ -118,49 +118,19 @@ position:relative;
 <td width="9" background="<%=path %>/images/regimages/reg_left.jpg"></td>
 <td width="944">
 		<div class="div_a">
-			<div>
-			<div>
-		<div class="gap1"> </div>
-		<div class="gap10" ></div>
-				
+			<div class="gap_box_left">
+				<jsp:include page="../info_box.jsp" />
+			</div>
+			<div class="gap_box_right">
+				<div class="entrys">
+					<div class="entry1" onclick="location.href='../EmployeeServlet?flag=list_all'">
+					</div>
+					<div class="entry2" onclick="location.href='../EmployeeServlet?flag=find'">
+					</div>
+					<div class="entry3" onclick="location.href='add.jsp'">
+					</div>
 				</div>
-		<div>
-	
-	
-		
-		</div>
-	
-		
-		</div>
-		
-		<div class="gap3">
-			<jsp:include page="../info_box.jsp" />
-		</div>
-		<div class="gap4"></div>
-		<div class="entry1" onclick="location.href='../EmployeeServlet?flag=find'">
-
-		</div>
-		<div class="entry2" onclick="location.href='add.jsp'">
-		</div>
-		<div class="entry3" onclick="location.href='../EmployeeServlet?flag=list_all'">
-		</div>
-	
-		
-		
-		
-		<div  class="foot3" >
-		<p style="color:#ffffff;">版权所有：大连民族大学(2016)</p>
-		<p style="color:#ffffff;">制作小组：</p>
-
-		</div>
-		
-		</div>
-		
-		
-		
-		
-	
-	
+			</div>
 		</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_right.jpg"></td>
@@ -173,7 +143,7 @@ position:relative;
 </table>
 </form>
 
-
+<jsp:include page="../foot.jsp" />
 
 </body>
 </html>
