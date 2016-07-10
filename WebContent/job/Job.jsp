@@ -16,55 +16,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><%=ptname %>添加新岗位信息</title>
-<link rel='Shortcut Icon' href='<%=path %>/favicon.ico' />
-<link rel='Bookmark' href='<%=path %>/favicon.ico' />
-<link rel='stylesheet' type='text/css' href='<%=path %>/css/normal.css' />
-<script  type='text/javascript'   src='<%=path %>/js/normalutil.js'></script>
-<link rel='stylesheet' type='text/css' href='<%=path %>/css/login.css' />
-<link type='text/css' rel='stylesheet' href='<%=path %>/css/formstyle.css' />
-<script  type='text/javascript'   src='<%=path %>/js/formjs.js'></script>
-<script type='text/javascript'>formStylePath.setImagePath('<%=path %>/images/');</script>
-<script  type='text/javascript'   src='<%=path %>/js/syspanel.js'></script>
-<script type='text/javascript'>panelStylePath.setImagePath('<%=path%>/images/grid_images/');</script>
-<script  type='text/javascript'   src='<%=path %>/js/pcasunzip.js'></script>
-<script  type='text/javascript'   src='<%=path %>/dwr/engine.js'></script>
-<script  type='text/javascript'   src='<%=path %>/dwr/util.js'></script>
-<script  type='text/javascript'   src='<%=path %>/dwr/interface/dwrCommonService.js'></script>
-<script type="text/javascript" src="<%=path %>/dwr/interface/dwrSysProcessService.js"></script>
-<style type="text/css">
-	th,td{
-		font-size: 13px;
-	}
-	.regbtn{
-		width:142px;
-		height:32px;
-		border:0px;
-		margin:0px;
-		cursor:pointer;
-		background: url("<%=path%>/images/regimages/reg_finish_btn.gif") no-repeat;
-		color: #4d2f00;
-		line-height: 32px;
-		font-size: 14px;
-		font-weight: bold;
-		font-family: 宋体;
-	}
-	.regbtn_hover{
-		width:142px;
-		height:32px;
-		border:0px;
-		margin:0px;
-		cursor:pointer;
-		background: url("<%=path%>/images/regimages/reg_finish_btn_.gif") no-repeat;
-		color: #4d2f00;
-		line-height: 32px;
-		font-size: 14px;
-		font-weight: bold;
-		font-family: 宋体;
-	}
-</style>
-<link href="css/bootstrap.css" rel="stylesheet">
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery-1.10.2.js"></script>
+	<jsp:include page="../import.jsp" />
 </head>
 <body>
 <jsp:include page="../head.jsp" />
