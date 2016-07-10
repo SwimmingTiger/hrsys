@@ -76,13 +76,15 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td align="center">${department.desc}</td>
 <td align="center">${department.foundDate}</td>
 <td align="center">
-	<a href="departmentsServlet.action?flag=allDepartments&edit_id=${department.id}">修改</a>
+	<a href="departmentsServlet.action?flag=allDepartments&edit_id=${department.id}&parent_id=${param.parent_id}">修改</a>
 	||
-	<a href="departmentsServlet.action?flag=del&uid=${department.id}" class="active">删除</a>
+	<a href="departmentsServlet.action?flag=del&uid=${department.id}&parent_id=${param.parent_id}" class="active">删除</a>
+	||
+	<a href="departmentsServlet.action?flag=allDepartments&parent_id=${department.id}">查看下级部门</a>
 </td>
 </c:if>
 <c:if test="${param.edit_id == department.id}">
-<form method="post" id="edit_form" action="departmentsServlet.action?flag=upd">
+<form method="post" id="edit_form" action="departmentsServlet.action?flag=upd&parent_id=${param.parent_id}">
 <input type="hidden" name="id" value="${department.id}">
 <td align="center">${department.id}</td>
 <td align="center"><input type="text" name="name" style="width: 100px;" value="${department.name}"></td>
@@ -100,7 +102,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td align="center">
 	<input type="submit" value="保存">
 	||
-	<a href="departmentsServlet.action?flag=allDepartments">取消</a>
+	<a href="departmentsServlet.action?flag=allDepartments&parent_id=${param.parent_id}">取消</a>
 </td>
 </form>
 </c:if>

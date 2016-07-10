@@ -125,7 +125,7 @@
                         <div class="gap2" onclick="location.href='employee/entry.jsp'"></div>
                         <div class="gap5" onclick="location.href='JobServlet?flag=all'"></div>
                         <div class="gap6" onclick="location.href='employee/add.jsp'"></div>
-                        <div class="gap9"  onclick="location='servlet/departmentsServlet.action?flag=allDepartment'"></div>
+                        <div class="gap9"  onclick="location='servlet/departmentsServlet.action?flag=allDepartments'"></div>
                         <div class="gap7" onclick="location='LeaveServlet.action?flag=sketchy'"></div>
                         <div class="gap8" onclick="alert('该功能还没有做好~~');"></div>
                     </div>

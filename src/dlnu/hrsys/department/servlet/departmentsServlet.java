@@ -59,6 +59,13 @@ public class departmentsServlet extends HttpServlet {
 	//	HttpSession session = request.getSession(true);
 		String flag = request.getParameter("flag");
 
+		int parent_id = 0;
+		try {
+			parent_id = Integer.valueOf(request.getParameter("parent_id"));
+		} catch (Exception ex) {
+			// ignore
+		}
+
 		try {
 			
 			System.out.print("into servlet    ");
@@ -67,8 +74,8 @@ public class departmentsServlet extends HttpServlet {
 				{
 					case "allDepartments":
 					{System.out.print("into all    ");
-						List all = new ArrayList();
-						all = dD.findAll();	
+
+						List all = dD.findAll(parent_id);
 						request.setAttribute("alldepartments", all);
 						request.getRequestDispatcher("/departments/departmentTable.jsp").forward(
 								request, response);
@@ -131,7 +138,7 @@ public class departmentsServlet extends HttpServlet {
 							//重定向 转入成功页面
 							System.out.print("success");
 							List all = new ArrayList();
-							all = dD.findAll();	
+							all = dD.findAll(parent_id);
 							request.setAttribute("alldepartments", all);
 							request.getRequestDispatcher("/departments/departmentTable.jsp").forward(
 									request, response);
@@ -144,24 +151,27 @@ public class departmentsServlet extends HttpServlet {
 					}
 					case "upd":
 					{
-						System.out.print("this is upd ");						
-						Department d = new Department();
-						
+						System.out.print("this is upd ");
+
 						int did = Integer.valueOf(request.getParameter("id"));
+
+						Department d = departmentsDAOFactory.getsDepartmentsDAO().findDepById(did);
+
 						String dname = request.getParameter("name");
 						int dtypeId = Integer.valueOf(request.getParameter("typeId"));
 						String dphone = request.getParameter("phone");
 						String dfax = request.getParameter("fax");
 						String ddesc = request.getParameter("desc");
 						Date ddate = Date.valueOf(request.getParameter("foundDate"));
-						
-						int dparentId = 0;
+
+						//根本没有修改parent_id的界面
+						/*int dparentId = 0;
 						try {
 							dparentId = Integer.valueOf(request.getParameter("parentId"));
 						}
 						catch (Exception ex) {
 							// ignore
-						}						
+						}*/
 						
 						d.setId(did);
 						d.setName(dname);
@@ -169,7 +179,7 @@ public class departmentsServlet extends HttpServlet {
 						d.setPhone(dphone);
 						d.setFax(dfax);
 						d.setDesc(ddesc);
-						d.setParentId(dparentId);
+						//d.setParentId(dparentId);
 						d.setFoundDate(ddate);
 						
 						System.out.print("   id is: ");
@@ -180,7 +190,7 @@ public class departmentsServlet extends HttpServlet {
 						if(bool)
 						{
 							List all = new ArrayList();
-							all = dD.findAll();	
+							all = dD.findAll(parent_id);
 							request.setAttribute("alldepartments", all);
 							request.getRequestDispatcher("/departments/departmentTable.jsp").forward(
 									request, response);
@@ -227,7 +237,7 @@ public class departmentsServlet extends HttpServlet {
 					default:
 					{
 						List all = new ArrayList();
-						all = dD.findAll();	
+						all = dD.findAll(parent_id);
 						request.setAttribute("alldepartments", all);
 						request.getRequestDispatcher("/departments/departmentTable.jsp").forward(
 								request, response);

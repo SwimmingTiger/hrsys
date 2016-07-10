@@ -231,6 +231,44 @@ public class DepartmentsDAOImpl implements DepartmentsDAO {
 		
 		return list;
 	}
+
+	public List findAll(int parentId)
+	{
+		List list = new ArrayList();
+		Department de = null;
+		ResultSet rs = null;
+
+		String sql = "SELECT * FROM `department` ";
+
+		if (parentId == 0) {
+			sql += "WHERE parent_id IS NULL";
+		} else {
+			sql += "WHERE parent_id = " + parentId;
+		}
+
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next())
+			{
+				de = new Department();
+				de.setId(rs.getInt("id"));
+				de.setName(rs.getString("name"));
+				de.setTypeId(rs.getInt("type_id"));
+				de.setPhone(rs.getString("phone"));
+				de.setFax(rs.getString("fax"));
+				de.setDesc(rs.getString("desc"));
+				de.setParentId(rs.getInt("parent_id"));
+				de.setFoundDate(rs.getDate("birth_date"));
+				list.add(de);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 	
 	public List findBySql(String sql)
 	{

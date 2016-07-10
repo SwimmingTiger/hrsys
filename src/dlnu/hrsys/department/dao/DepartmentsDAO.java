@@ -13,5 +13,8 @@ public interface DepartmentsDAO {
 	public List seekDepByLikeName(String departmentName);
 	public List seekDepByTypeId(int typeId);
 	public List findAll();
+
+	List findAll(int parentId);
+
 	public List findBySql(String sql);
 }
