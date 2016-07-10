@@ -83,7 +83,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right">上级部门</td>
 		<td nowrap="nowrap" colspan="2" style="padding-left: 10px;">
-		<input type="text" style="width: 155px;" name="parentId" value="null">
+		<input type="text" style="width: 155px;" name="parentId" value="">
 		</td>
 		</tr>
 		<tr>
@@ -104,14 +104,6 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<td style="padding-left: 10px; color: #808080;font-size: 12px;"><label style="padding-left: 5px;color: red"  id=""></label> </td>	
 		</tr>
 		</table>
-		</div>
-		</fieldset>
-		<br/>
-		
-		<fieldset>
-		<legend  style="font-family: '宋体';color:#D0410A "></legend>
-		<div style="overflow: hidden;">
-		
 		</div>
 		</fieldset>
 		<br/>
