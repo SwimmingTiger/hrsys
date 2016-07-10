@@ -60,23 +60,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		font-weight: bold;
 		font-family: 宋体;
 	}
-	
-	
 </style>
 </head>
 <body>
-<table border="0" cellpadding="0" cellspacing="0" width="966" align="center" height="70">
-<tr height="70">
-<td width="110">
-<img src="<%=path %>
-" border="0" height="45"/>
-</td>
-<td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
-<td align="right" style="color:#999999;padding-right: 15px;">
-<a href="<%=path %>" class="" target="_blank">链接</a>&nbsp;&nbsp;
-</td>
-</tr>
-</table>
+<jsp:include page="../head.jsp" />
 <form method="post" name="" action="">
 <input type="hidden" name="methods" id="methods">
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center">

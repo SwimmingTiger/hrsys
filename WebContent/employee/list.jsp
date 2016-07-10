@@ -61,17 +61,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </style>
 </head>
 <body style="background:url(../images/bg11.jpg)">
-<table border="0" cellpadding="0" cellspacing="0" width="966" align="center" height="70">
-<tr height="70">
-<td width="110">
-<img src="<%=path %>/images/dlnu1.png" border="0" height="45"/>
-</td>
-<td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
-<td align="right" style="color:#999999;padding-right: 15px;">
-<a href="<%=path %>/index.jsp" class="">返回主页</a>&nbsp;&nbsp;
-</td>
-</tr>
-</table>
+<jsp:include page="../head.jsp" />
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center">
 <tr height="57">
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>

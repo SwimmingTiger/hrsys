@@ -117,50 +117,10 @@ position:relative;
 		font-weight: bold;
 		font-family: 宋体;
 }
-	.regbtn{
-		width:142px;
-		height:32px;
-		border:0px;
-		margin:0px;
-		cursor:pointer;
-		background: url("<%=path%>/images/regimages/reg_finish_btn.gif") no-repeat;
-		color: #4d2f00;
-		line-height: 32px;
-		font-size: 14px;
-		font-weight: bold;
-		font-family: 宋体;
-	}
-	.regbtn_hover{
-		width:142px;
-		height:32px;
-		border:0px;
-		margin:0px;
-		cursor:pointer;
-		background: url("<%=path%>/images/regimages/reg_finish_btn_.gif") no-repeat;
-		color: #4d2f00;
-		line-height: 32px;
-		font-size: 14px;
-		font-weight: bold;
-		font-family: 宋体;
-	}
 </style>
 </head>
 <body>
-<table border="0" cellpadding="0" cellspacing="0" width="966" align="center" height="70">
-<tr height="70">
-<td width="110">
-<img src="<%=path %>/images/dlnu1.png" border="0" height="45"/>
-
-</td>
-<td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
-<td align="right" style="color:#999999;padding-right: 15px;">
-<a href="index.jsp" class="btn btn-primary btn-lg active" role="button" >注销用户</a>&nbsp;&nbsp;
-</td>
-<td>
-<a href="../index.jsp" class="btn btn-primary btn-lg active" role="button" style="margin-right:-60px;">返回主页</a>&nbsp;&nbsp;
-</td>
-</tr>
-</table>
+<jsp:include page="../head.jsp" />
 <form method="post" name="" action="">
 <input type="hidden" name="methods" id="methods">
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center">
@@ -197,12 +157,12 @@ position:relative;
 	</marquee>
 		</div>
 		<div class="gap4"></div>
-		<div class="entry1" onclick="location.href='add.jsp'">
+		<div class="entry1" onclick="location.href='../EmployeeServlet?flag=find'">
 
 		</div>
-		<div class="entry2"  onclick="location.href='../EmployeeServlet?flag=find'">
+		<div class="entry2" onclick="location.href='add.jsp'">
 		</div>
-		<div class="entry3">
+		<div class="entry3" onclick="location.href='../EmployeeServlet?flag=list_all'">
 		</div>
 	
 		

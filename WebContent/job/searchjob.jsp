@@ -60,56 +60,10 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		font-weight: bold;
 		font-family: 宋体;
 	}
-	
-	
-.newBtn {
-	color: #fff;
-	background-color: #286090;
-	width: 84px;
-	height: 31px;
-	font: 13px "宋体";
-	border: 0;
-	margin: 5px 0;
-	padding: 10px 16px;
-	border-radius: 6px;
-	display: inline-block;
-	text-decoration: none;
-	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-}
-
-.newBtn:hover {
-	background: url(<%=path%>/images/login_btn_.png) no-repeat;
-	width: 84px;
-	height: 31px;
-	line-height: 31px;
-	font: 13px "宋体";
-	color: #1656CD;
-	border: 0;
-	margin: 5px 0;
-	cursor: pointer;
-	border: 0;
-	margin: 5px 0;
-	cursor: pointer;
-	text-decoration: none;
-}
 </style>
 </head>
 <body>
-<table border="0" cellpadding="0" cellspacing="0" width="966" align="center" >
-<tr style="height:70px">
-<td width="110">
-<img src="<%=path %>/images/dlnu1.png" border="0" height="45"/>
-</td>
-<td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font></td>
-<td align="right" style="color:#999999;padding-right: 15px;">
-<a href="index.jsp" class="newBtn" role="button"style="font-size:12px" >注销用户</a>&nbsp;&nbsp;
-	
-<a href="../index.jsp" class="newBtn" role="button" style="font-size:12px">返回主页</a>&nbsp;&nbsp;
-
-</td>
-</tr>
-</table>
+<jsp:include page="../head.jsp" />
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center">
 <tr >
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
