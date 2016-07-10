@@ -188,7 +188,7 @@ public class LeaveServlet extends HttpServlet {
 			
 			//员工详细信息查询
 			if ("detail".equals(flag)) {
-				int id = Integer.valueOf(request.getParameter("employee_id"));
+				int id = Integer.valueOf(request.getParameter("record_id"));
 				Leave l = ld.findDetail(id);
 				request.setAttribute("leave", l);
 				request.getRequestDispatcher("/leave/DetailInfo.jsp").forward(request, response);

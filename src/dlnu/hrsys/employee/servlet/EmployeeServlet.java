@@ -124,12 +124,15 @@ public class EmployeeServlet extends HttpServlet {
 		  if("update".equals(flag)) {
               int id2 = Integer.parseInt(request.getParameter("id"));
               probation_status = Integer.valueOf(request.getParameter("probation_status")).intValue();
-              if(edm.updEmployee(id2, probation_status)) {
-                  new ArrayList();
-                  List list1 = edm.findEmployeeByHire_Id(4);
-                  request.setAttribute("emp_linshi", list1);
-                  request.getRequestDispatcher("/employee/probation.jsp").forward(request, response);
-              }
+
+			  if (probation_status == 3) {
+				  response.sendRedirect("leave/LeaveAdd.jsp?employee_id=" + probation_status);
+			  } else {
+				  edm.updEmployee(id2, probation_status);
+				  List list1 = edm.findEmployeeByHire_Id(4);
+				  request.setAttribute("emp_linshi", list1);
+				  request.getRequestDispatcher("/employee/probation.jsp").forward(request, response);
+			  }
           }
 		  
 		} catch (DBException e1) {

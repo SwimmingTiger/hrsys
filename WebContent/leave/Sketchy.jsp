@@ -96,7 +96,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td align="center">
 	<a href="LeaveServlet.action?flag=sketchy&edit_id=${leave.id}">修改</a>
 	||
-	<a href="LeaveServlet.action?flag=detail&employee_id=${leave.employee_id}" class="active">查看详细信息</a>
+	<a href="LeaveServlet.action?flag=detail&record_id=${leave.id}" class="active">查看详细信息</a>
 </td>
 </c:if>
 <c:if test="${param.edit_id == leave.id}">
@@ -155,9 +155,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </table>
 
 
-<center>
 <jsp:include page="../foot.jsp"></jsp:include>
-</center>
 
 </body>
 </html>
