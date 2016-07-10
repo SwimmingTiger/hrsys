@@ -114,7 +114,11 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</td>
 		
 		<td>
-		<input type="text" style="width: 150px;height: 17px;" id="department_id" name="department_id" value="">
+			<SELECT id="department_id" name="department_id">
+				<c:forEach items="${typeUtil.departments}" var="item">
+					<option value="${item.id}">${item.name}</option>
+				</c:forEach>
+			</SELECT>
 		</td>
 		
 		</tr>
@@ -125,7 +129,11 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</td>
 		
 		<td>
-		<input type="text" style="width: 150px;height: 17px;" id="job_id" name="job_id" value="">
+			<SELECT id="job_id" name="job_id">
+				<c:forEach items="${typeUtil.jobs}" var="item">
+					<option value="${item.id}">${item.name}</option>
+				</c:forEach>
+			</SELECT>
 		</td>
 		
 		<td style="width: 150px;padding-right: 10px;" align="right"><em>*</em>入职日期

@@ -110,4 +110,12 @@ public class TypeUtil {
     public TypeGroup getLeaveJobGroup() {
         return dao.getLeaveJobs();
     }
+
+    public TypeGroup getDepartments() {
+        return dao.getDepartments();
+    }
+
+    public TypeGroup getJobs() {
+        return dao.getJobs();
+    }
 }

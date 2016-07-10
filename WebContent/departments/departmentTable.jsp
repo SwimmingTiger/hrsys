@@ -61,7 +61,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
        </td>
 		</tr>
 		
-<th>编号</th><th>部门名称</th><th>类型</th><th>电话</th><th>传真</th><th>描述</th><th>入职日期</th><th>操作</th>
+<th>编号</th><th>部门名称</th><th>类型</th><th>电话</th><th>传真</th><th>描述</th><th>成立日期</th><th>操作</th>
 </tr>
 
 <c:forEach items="${alldepartments}" var="department">

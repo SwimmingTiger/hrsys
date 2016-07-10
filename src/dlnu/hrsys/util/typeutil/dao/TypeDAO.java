@@ -104,7 +104,7 @@ public class TypeDAO {
 	}
 	
 	public TypeGroup getLeaveDepartments() {
-		TypeGroup group = new TypeGroup();
+        TypeGroup group = new TypeGroup();
 
 		try {
 			PreparedStatement itemPst = conn
@@ -124,4 +124,50 @@ public class TypeDAO {
 
 		return group;
 	}
+
+    public TypeGroup getDepartments() {
+        TypeGroup group = new TypeGroup();
+
+        try {
+            PreparedStatement itemPst = conn
+                    .prepareStatement("SELECT id,name FROM department ORDER BY id ASC");
+            ResultSet itemRs = itemPst.executeQuery();
+
+            while (itemRs.next()) {
+                TypeItem item = new TypeItem();
+                item.setId(itemRs.getInt("id"));
+                item.setName(itemRs.getString("name"));
+                group.add(item);
+            }
+
+            itemPst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return group;
+    }
+
+    public TypeGroup getJobs() {
+        TypeGroup group = new TypeGroup();
+
+        try {
+            PreparedStatement itemPst = conn
+                    .prepareStatement("SELECT id,name FROM job ORDER BY id ASC");
+            ResultSet itemRs = itemPst.executeQuery();
+
+            while (itemRs.next()) {
+                TypeItem item = new TypeItem();
+                item.setId(itemRs.getInt("id"));
+                item.setName(itemRs.getString("name"));
+                group.add(item);
+            }
+
+            itemPst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return group;
+    }
 }

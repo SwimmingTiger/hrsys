@@ -83,7 +83,12 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right">上级部门</td>
 		<td nowrap="nowrap" colspan="2" style="padding-left: 10px;">
-		<input type="text" style="width: 155px;" name="parentId" value="">
+			<SELECT id="department_id" name="parentId">
+				<option value="">无</option>
+				<c:forEach items="${typeUtil.departments}" var="item">
+					<option value="${item.id}">${item.name}</option>
+				</c:forEach>
+			</SELECT>
 		</td>
 		</tr>
 		<tr>
