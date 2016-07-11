@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="dlnu.hrsys.util.TypeUtil" import="dlnu.hrsys.util.typeutil.entity.*" %>
 <%
 String path = request.getContextPath();
 
 String ptname = "人事管理平台";
 
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+request.setAttribute("typeUtil", TypeUtil.getInstance());
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,13 +43,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div>
 		<table class="table"  style="line-height: 32px;" width="700" align="center" cellpadding="1" cellspacing="1">
 		<tr>
-<th>员工编号</th><th>姓名</th><th>员工状态</th><th>操作</th>
+<th>员工编号</th><th>姓名</th><th>部门</th><th>岗位</th><th>员工状态</th><th>操作</th>
 </tr>
 <c:forEach items="${emp_linshi}" var="emp">
 <form action="/hrsys/EmployeeServlet?flag=update&id=${emp.id}" method="post">
 <tr>
 <td align="center">${emp.id}</td>
 <td align="center">${emp.name}</td>
+	<td align="center">${typeUtil.getDepartmentName(emp.department_id)}</td>
+	<td align="center">${typeUtil.getJobName(emp.job_id)}</td>
 <td align="center"><SELECT name="probation_status" id="probation_status">
 				 <option value="3" selected>转正</option>
 				 <option value="4">延期</option>

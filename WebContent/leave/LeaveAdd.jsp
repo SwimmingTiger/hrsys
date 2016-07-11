@@ -67,8 +67,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<td style="padding-left: 10px;">
 			<input type="text" style="width: 46px;" id="employee_id" name="id" value="${param.employee_id}" readonly>
 				<span class="emp_info emp_info_th">姓名</span><span class="emp_info">${emp.name}</span>
-				<span class="emp_info emp_info_th">部门</span><span class="emp_info">${typeUtil.getItemName(emp.department_id)}</span>
-				<span class="emp_info emp_info_th">岗位</span><span class="emp_info">${typeUtil.getItemName(emp.job_id)}</span>
+				<span class="emp_info emp_info_th">部门</span><span class="emp_info">${typeUtil.getDepartmentName(emp.department_id)}</span>
+				<span class="emp_info emp_info_th">岗位</span><span class="emp_info">${typeUtil.getJobName(emp.job_id)}</span>
 		</td>
 		<td style="padding-left: 10px; color: #808080;font-size: 12px;"><label style="padding-left: 5px;color: red"  id=""></label> </td>
 		</td>

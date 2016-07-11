@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="dlnu.hrsys.util.TypeUtil" import="dlnu.hrsys.util.type.entity.*" %>
+<%@ page import="dlnu.hrsys.util.TypeUtil" import="dlnu.hrsys.util.typeutil.entity.*" %>
 <%
 String path = request.getContextPath();
 
@@ -73,8 +73,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <tr>
 <td>${emp.id}</td>
 <td>${emp.name}</td>
-	<td align="center">${typeUtil.getItemName(emp.department_id)}</td>
-	<td align="center">${typeUtil.getItemName(emp.job_id)}</td>
+	<td align="center">${typeUtil.getDepartmentName(emp.department_id)}</td>
+	<td align="center">${typeUtil.getJobName(emp.job_id)}</td>
 		<td align="center">
 			<a href="leave/LeaveAdd.jsp?employee_id=${emp.id}">离职</a>
 		</td>

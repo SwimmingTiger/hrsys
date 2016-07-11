@@ -123,4 +123,20 @@ public class TypeUtil {
     public TypeGroup getJobs() {
         return dao.getJobs();
     }
+
+    public TypeItem getDepartment(int id) {
+        return dao.getDepartment(id);
+    }
+
+    public TypeItem getJob(int id) {
+        return dao.getJob(id);
+    }
+
+    public String getDepartmentName(int id) {
+        return getDepartment(id).getName();
+    }
+
+    public String getJobName(int id) {
+        return getJob(id).getName();
+    }
 }
