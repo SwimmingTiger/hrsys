@@ -53,6 +53,7 @@ public class EmployeeServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
 
 		EmployeeDaoImpl edm;
 		int probation_status;
@@ -67,10 +68,10 @@ public class EmployeeServlet extends HttpServlet {
 		  if("add".equals(flag)){ 
 			  
 			  if(request.getParameter("birth_date").length() <= 0 || request.getParameter("hire_date").length() <= 0 || request.getParameter("join_date").length() <= 0){
-				  JOptionPane.showMessageDialog(null, "必填项不能为空！");
-				  request.getRequestDispatcher("/employee/add.jsp").forward(request,response); 
+				  //JOptionPane.showMessageDialog(null, "必填项不能为空！");
+				  //request.getRequestDispatcher("/employee/add.jsp").forward(request,response);
+				  out.println("<script>alert('必填项不能为空！');history.back();</script>");
 			  }else{
-			  
 			  //int id=Integer.valueOf(request.getParameter("id")); 
 			  String name=request.getParameter("name");
 			  int sex_id=Integer.valueOf(request.getParameter("sex_id"));
@@ -129,7 +130,7 @@ public class EmployeeServlet extends HttpServlet {
 
 			if("list_all".equals(flag)){
 				List list = new ArrayList();
-				list = edm.findEmployeeByHire_Id(5);
+				list = edm.findEmployeeByHire_Id(3);
 				session.setAttribute("emp_list", list);
 				request.getRequestDispatcher("/employee/list.jsp").forward(request,response);
 			}
@@ -138,8 +139,8 @@ public class EmployeeServlet extends HttpServlet {
               int id2 = Integer.parseInt(request.getParameter("id"));
               probation_status = Integer.valueOf(request.getParameter("probation_status")).intValue();
 
-			  if (probation_status == 3) {
-				  response.sendRedirect("leave/LeaveAdd.jsp?employee_id=" + probation_status);
+			  if (probation_status == 5) {
+				  response.sendRedirect("leave/LeaveAdd.jsp?employee_id=" + id2);
 			  } else {
 				  edm.updEmployee(id2, probation_status);
 				  List list1 = edm.findEmployeeByHire_Id(4);
