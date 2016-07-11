@@ -1,10 +1,6 @@
 package dlnu.hrsys.employee.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import dlnu.hrsys.employee.dao.EmployeeDao;
@@ -289,4 +285,111 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
         return e;
     }
+
+	//模糊查询
+	public List<Employee> findEveryThing(int employee_id, String name, int department_id,
+										 int job_id, Date join_date1, Date join_date2, int hire_type_id) {
+		List<Employee> result = new ArrayList<>();
+		List<Object> param = new ArrayList<>();
+		Employee e = null;
+
+		String sql = "SELECT * FROM employee WHERE 1";
+
+		if (employee_id != 0) {
+			sql += " AND id = ?";
+			param.add(employee_id);
+		}
+
+		if (name != null && name.length() > 0) {
+			sql += " AND name LIKE ?";
+			param.add("%" +name+ "%");
+		}
+
+		if (department_id != 0) {
+			sql += " AND department_id = ?";
+			param.add(department_id);
+		}
+
+		if (job_id != 0) {
+			sql += " AND job_id = ?";
+			param.add(job_id);
+		}
+
+		if (join_date2 != null && join_date1 == null) {
+			join_date1 = join_date2;
+			join_date2 = null;
+		}
+
+		if (join_date1 != null) {
+			if (join_date2 != null
+					&& join_date2.getTime() != join_date1.getTime()) {
+				if (join_date2.getTime() < join_date1.getTime()) {
+					Date tDate = join_date2;
+					join_date2 = join_date1;
+					join_date1 = tDate;
+				}
+
+				sql += " AND join_date BETWEEN ? AND ?";
+				param.add(join_date1);
+				param.add(join_date2);
+
+			} else {
+				sql += " AND join_date = ?";
+				param.add(join_date1);
+			}
+		}
+
+		if (hire_type_id != 0) {
+			sql += " AND hire_type_id = ?";
+			param.add(hire_type_id);
+		}
+
+		System.out.println(sql);
+
+		try{
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			for (int i=1; i<=param.size(); i++) {
+				pstmt.setObject(i, param.get(i-1));
+			}
+
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				e = new Employee();
+				e.setId(rs.getInt("id"));
+				e.setName(rs.getString("name"));
+				e.setSex_id(rs.getInt("sex_id"));
+				e.setBirth_date(rs.getDate("birth_date"));
+				e.setId_card(rs.getString("id_card"));
+				e.setDepartment_id(rs.getInt("department_id"));
+				e.setJob_id(rs.getInt("job_id"));
+				e.setHire_date(rs.getDate("hire_date"));
+				e.setJoin_date(rs.getDate("hire_date"));
+				e.setHire_type_id(rs.getInt("hire_date"));
+				e.setHr_type_id(rs.getInt("hr_type_id"));
+				e.setPolitics_status_id(rs.getInt("politics_status_id"));
+				e.setNationality_id(rs.getInt("nationality_id"));
+				e.setNative_place(rs.getString("native_place"));
+				e.setPhone(rs.getString("phone"));
+				e.setEmail(rs.getString("email"));
+				e.setHeight_cm(rs.getInt("height_cm"));
+				e.setBlood_type_id(rs.getInt("blood_type_id"));
+				e.setMarital_status_id(rs.getInt("marital_status_id"));
+				e.setBirth_place(rs.getString("birth_place"));
+				e.setDomicile_place(rs.getString("domicile_place"));
+				e.setEducation_status_id(rs.getInt("education_status_id"));
+				e.setDegree_id(rs.getInt("degree_id"));
+				e.setGraduate_school(rs.getString("graduate_school"));
+				e.setMajor_name(rs.getString("major_name"));
+				e.setGraduate_date(rs.getDate("graduate_date"));
+				result.add(e);
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+
+		return result;
+
+
+	}
 }

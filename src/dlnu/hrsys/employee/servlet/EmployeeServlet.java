@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import dlnu.hrsys.employee.entity.Employee;
 import dlnu.hrsys.employee.impl.EmployeeDaoImpl;
 import dlnu.hrsys.util.DBUtil.DBException;
+import dlnu.hrsys.util.TypeUtil;
 
 @WebServlet(name="EmployeeServlet", urlPatterns="/EmployeeServlet")
 public class EmployeeServlet extends HttpServlet {
@@ -132,6 +133,51 @@ public class EmployeeServlet extends HttpServlet {
 				List list = new ArrayList();
 				list = edm.findEmployeeByHire_Id(3);
 				session.setAttribute("emp_list", list);
+				request.getRequestDispatcher("/employee/list.jsp").forward(request,response);
+			}
+
+			if("search_all".equals(flag)){
+				int employee_id = 0;
+				String name = null;
+
+				try {
+					employee_id = Integer.valueOf(request.getParameter("employee"));
+				} catch (Exception ex) {
+					name = request.getParameter("employee");
+				}
+
+				int department_id = 0;
+				try {
+					department_id = Integer.valueOf(request.getParameter("department_id"));
+				} catch (Exception ex) {
+					//ignore
+				}
+
+				int job_id = 0;
+				try {
+					job_id = Integer.valueOf(request.getParameter("job_id"));
+				} catch (Exception ex) {
+					//ignore
+				}
+
+				Date join_date1 = null;
+				try {
+					join_date1 = Date.valueOf(request.getParameter("join_date1"));
+				} catch (Exception ex) {
+					//ignore
+				}
+
+				Date join_date2 = null;
+				try {
+					join_date2 = Date.valueOf(request.getParameter("join_date2"));
+				} catch (Exception ex) {
+					//ignore
+				}
+
+
+				List<Employee> al = edm.findEveryThing(employee_id, name, department_id, job_id, join_date1, join_date2, TypeUtil.TYPE_NORMAL_EMPLOYEE);
+
+				session.setAttribute("emp_list", al);
 				request.getRequestDispatcher("/employee/list.jsp").forward(request,response);
 			}
 		  
