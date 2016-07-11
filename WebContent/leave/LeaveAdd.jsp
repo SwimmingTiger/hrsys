@@ -30,10 +30,28 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		font-weight: bold;
 	}
 </style>
+<style type="text/css">
+	body{font-size:16px;}
+	form {
+		float:right;
+		position:relative;
+		right: 140px;
+	}
+</style>
+<script type="text/javascript">
+	function mycheck(){
+		//判断离职时间是否为空
+		if(form.leave_time.value == ""){
+			alert("离职时间不能为空！");
+			form.leave_time.focus();
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 <jsp:include page="../head.jsp" />
-<form method="post" action="../LeaveServlet.action?flag=add">
+<form method="post" action="../LeaveServlet.action?flag=add" name="form">
 <input type="hidden" name="methods" id="methods">
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center">
 <tr height="57">
@@ -103,7 +121,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<div>
 		
 		<div style="height: 80px;text-align: center;vertical-align: middle;">
-			<input id="subbtn"  type="submit" value="确定" onclick="subcompanyreg()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
+			<input id="subbtn"  type="submit" value="确定" onclick="return mycheck()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 			<input id="returnbtn"  type="button" value="返回" onclick="history.back()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 		</div>
 		</div>

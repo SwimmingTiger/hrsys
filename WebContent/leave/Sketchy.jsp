@@ -23,6 +23,24 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 	text-align:center;
 	}
 </style>
+<style type="text/css">
+	body{font-size:16px;}
+	form {
+		float:right;
+		position:relative;
+		right: 140px;
+	}
+</style>
+<script type="text/javascript">
+	function mycheck(){
+		//判断离职时间是否为空
+		if(form.leave_time.value == ""){
+			alert("离职时间不能为空！");
+			form.leave_time.focus();
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 <jsp:include page="../head.jsp" />
@@ -81,7 +99,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<br>
 		<table  class="table"   style="line-height: 32px;" width="800" align="center" cellpadding="1" cellspacing="1">
 		<tr>
-<th class="infor_th">员工编号</th><th class="infor_th"  style=width:70px;>姓名</th><th class="infor_th">部门名称</th><th class="infor_th">岗位名称</th><th class="infor_th">离职类型</th><th class="infor_th">离职时间</th><th class="infor_th">离职去向</th><th width="120px" class="infor_th">操作</th>
+<th class="infor_th">员工编号</th><th class="infor_th"  style=width:70px;>姓名</th><th class="infor_th">部门名称</th><th class="infor_th">岗位名称</th><th class="infor_th" style=width:120px>离职类型</th><th class="infor_th">离职时间</th><th class="infor_th">离职去向</th><th width="120px" class="infor_th">操作</th>
 </tr>
 <c:forEach items="${sketchy}" var="leave">
 <tr>
@@ -100,7 +118,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </td>
 </c:if>
 <c:if test="${param.edit_id == leave.id}">
-<form method="post" action="LeaveServlet.action?flag=upd">
+<form method="post" action="LeaveServlet.action?flag=upd" name="form">
 <input type="hidden" name="id" value="${leave.id}">
 <td align="center">${leave.employee_id}</td>
 <td align="center">${leave.name}</td>
@@ -115,7 +133,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </td>
 <td align="center"><input name="leave_time" type="text" value="${leave.leave_time}" style="width:80px"></td>
 <td align="center"><input name="destination" type="text" value="${leave.destination}"></td>
-<td align="center"><input type="submit" value="保存"> || <a href="LeaveServlet.action?flag=sketchy">取消</a></td>
+<td align="center"><input type="submit" value="保存" onclick="return mycheck()"> || <a href="LeaveServlet.action?flag=sketchy">取消</a></td>
 </form>
 </c:if>
 </tr>
