@@ -48,9 +48,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td align="center">${emp.id}</td>
 <td align="center">${emp.name}</td>
 <td align="center"><SELECT name="probation_status" id="probation_status">
-				 <option value="5" selected>转正</option>
+				 <option value="3" selected>转正</option>
 				 <option value="4">延期</option>
-				 <option value="3">不予录用</option>
+				 <option value="5">不予录用</option>
 		</SELECT></td>
 		<td align="center">
 		<input	type="submit" value="确定" >

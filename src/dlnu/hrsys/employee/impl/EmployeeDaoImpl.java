@@ -85,7 +85,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 			pstmt.executeUpdate();
 			
-			if(hire_id == 5) {
+			if(hire_id == 3) {
                 pstmt = conn.prepareStatement("update employee set hire_type_id = ?  where id = ? ");
                 pstmt.setInt(1, hire_id);
                 pstmt.setInt(2, id);
