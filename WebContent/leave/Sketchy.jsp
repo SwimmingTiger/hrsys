@@ -23,14 +23,6 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 	text-align:center;
 	}
 </style>
-<style type="text/css">
-	body{font-size:16px;}
-	form {
-		float:right;
-		position:relative;
-		right: 140px;
-	}
-</style>
 <script type="text/javascript">
 	function mycheck(){
 		//判断离职时间是否为空
@@ -131,7 +123,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</c:forEach>
 	</select>
 </td>
-<td align="center"><input name="leave_time" type="text" value="${leave.leave_time}" style="width:80px"></td>
+<td align="center"><input class="Wdate" onClick="WdatePicker()" name="leave_time" type="text" value="${leave.leave_time}" style="width:88px"></td>
 <td align="center"><input name="destination" type="text" value="${leave.destination}"></td>
 <td align="center"><input type="submit" value="保存" onclick="return mycheck()"> || <a href="LeaveServlet.action?flag=sketchy">取消</a></td>
 </form>

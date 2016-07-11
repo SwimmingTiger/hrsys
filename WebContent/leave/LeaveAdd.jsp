@@ -30,14 +30,6 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		font-weight: bold;
 	}
 </style>
-<style type="text/css">
-	body{font-size:16px;}
-	form {
-		float:right;
-		position:relative;
-		right: 140px;
-	}
-</style>
 <script type="text/javascript">
 	function mycheck(){
 		//判断离职时间是否为空
