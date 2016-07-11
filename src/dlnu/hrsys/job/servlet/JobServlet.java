@@ -204,6 +204,8 @@ public class JobServlet extends HttpServlet {
 				int job_id = Integer.valueOf(request.getParameter("uid"));
 				 list=edm.findEmployeeByJobId(job_id);
 				 if(list!=null && !list.isEmpty()){
+					 Job job = jd.findJobById(job_id);
+					 request.setAttribute("job", job);
 					 request.setAttribute("allEmp", list);
 					 System.out.println(list);
 					 request.getRequestDispatcher("job/Einfo.jsp").forward(request,response);
@@ -215,7 +217,7 @@ public class JobServlet extends HttpServlet {
 							response.setCharacterEncoding("UTF-8");
 							PrintWriter out1 = response.getWriter();
 							out1.println("<script type='text/javascript'>"
-									+ "alert('您查询的结果不存在！');"
+									+ "alert('该岗位下没有员工！');"
 									+ "location='JobServlet?flag=find';"
 									+ "</script>");
 							out1.println("</HTML>");

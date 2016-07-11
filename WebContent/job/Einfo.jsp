@@ -36,7 +36,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体">注意：带有&nbsp;<font color="red">*</font>&nbsp;号的必须填写</div>
 		<fieldset>
 		<legend style="font-family: '宋体';color:#007BBB ">岗位下员工信息</legend>
-		<p style="font-size:16px;">当前岗位：${job.name}<a href="searchjob.jsp">（点击返回岗位管理页面）</a></p>
+		<p style="font-size:16px;">当前岗位：${job.name}<a href="JobServlet?flag=all">（点击返回岗位管理页面）</a></p>
 		
 		<table class="table" style="position:relative;">
           <tr>
@@ -54,7 +54,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<td style="text-align:center;">${emp.name}</td>
 		<td style="text-align:center;">${typeUtil.getItemName(emp.sex_id)}</td>
 		<td style="text-align:center;">${emp.join_date}</td>
-		<td style="text-align:center;"></td>
+		<td style="text-align:center;">${typeUtil.getDepartmentName(emp.department_id)}</td>
 		<td style="text-align:center;">${typeUtil.getItemName(emp.hr_type_id)}</td>
 		</c:forEach>
 		</tr>
