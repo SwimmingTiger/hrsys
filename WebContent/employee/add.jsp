@@ -4,7 +4,7 @@
 <%
 String path = request.getContextPath();
 
-String ptname = "员工管理平台";
+String ptname = "人事管理平台";
 
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
@@ -16,69 +16,10 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><%=ptname %>-员工入职</title>
-<link rel='Shortcut Icon' href='<%=path %>/favicon.ico' />
-<link rel='Bookmark' href='<%=path %>/favicon.ico' />
-<link rel='stylesheet' type='text/css' href='<%=path %>/css/normal.css' />
-<script  type='text/javascript'   src='<%=path %>/js/normalutil.js'></script>
-<link rel='stylesheet' type='text/css' href='<%=path %>/css/login.css' />
-<link type='text/css' rel='stylesheet' href='<%=path %>/css/formstyle.css' />
-<script  type='text/javascript'   src='<%=path %>/js/formjs.js'></script>
-<script type='text/javascript'>formStylePath.setImagePath('<%=path %>/images/');</script>
-<script  type='text/javascript'   src='<%=path %>/js/syspanel.js'></script>
-<script type='text/javascript'>panelStylePath.setImagePath('<%=path%>/images/grid_images/');</script>
-<script  type='text/javascript'   src='<%=path %>/js/pcasunzip.js'></script>
- <script language="javascript" type="text/javascript" src="<%=path %>/js/My97DatePicker/WdatePicker.js"></script>
-<style type="text/css">
-	th,td{
-		font-size: 13px;
-	}
-	.regbtn{
-		width:142px;
-		height:32px;
-		border:0px;
-		margin:0px;
-		cursor:pointer;
-		background: url("<%=path%>/images/regimages/reg_finish_btn.gif") no-repeat;
-		color: #4d2f00;
-		line-height: 32px;
-		font-size: 14px;
-		font-weight: bold;
-		font-family: 宋体;
-	}
-	.regbtn_hover{
-		width:142px;
-		height:32px;
-		border:0px;
-		margin:0px;
-		cursor:pointer;
-		background: url("<%=path%>/images/regimages/reg_finish_btn_.gif") no-repeat;
-		color: #4d2f00;
-		line-height: 32px;
-		font-size: 14px;
-		font-weight: bold;
-		font-family: 宋体;
-	}
-		
-</style>
+<jsp:include page="../import.jsp" />
 </head>
 <body>
-<table border="0" cellpadding="0" cellspacing="0" width="966" align="center" height="70">
-
-<tr height="70">
-
-<td width="110">
-<img src="<%=path %>/images/dlnu1.png" border="0" height="45"/>
-</td>
-
-<td align="left" ><font face="幼圆" style="font-size:22px;"  color="#666666" ><strong><%=ptname %></strong></font>
-</td>
-
-<td align="right" style="color:#999999;padding-right: 15px;">
-<a href="<%=path %>" class="" target="_blank">链接</a>&nbsp;&nbsp;
-</td>
-
-</tr>
-</table>
+<jsp:include page="../head.jsp" />
 
 <form method="post" name="" action="<%=path%>/EmployeeServlet?flag=add">
 <input type="hidden" name="methods" id="methods">
@@ -91,7 +32,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
 
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关申请信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。
 </div>
 
 </td>
@@ -124,12 +65,12 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</td>
 		
 		<td align="left">
-		<input type="text" style="width: 150px;height: 17px;" id="id" name="id" value="">
+		<input type="text" style="width: 150px;height: 17px;" id="id" name="id" placeholder="自动生成" readonly="readonly">
 		</td>
 		
 		<td style="width: 150px;padding-right: 12px;"align="right"><em>*</em>姓名
 		</td>
-		
+
 		<td>
 		<input type="text" style="width: 150px;height: 17px;" id="name" name="name" value="">
 		</td>
@@ -173,7 +114,11 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</td>
 		
 		<td>
-		<input type="text" style="width: 150px;height: 17px;" id="department_id" name="department_id" value="">
+			<SELECT id="department_id" name="department_id">
+				<c:forEach items="${typeUtil.departments}" var="item">
+					<option value="${item.id}">${item.name}</option>
+				</c:forEach>
+			</SELECT>
 		</td>
 		
 		</tr>
@@ -184,7 +129,11 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</td>
 		
 		<td>
-		<input type="text" style="width: 150px;height: 17px;" id="job_id" name="job_id" value="">
+			<SELECT id="job_id" name="job_id">
+				<c:forEach items="${typeUtil.jobs}" var="item">
+					<option value="${item.id}">${item.name}</option>
+				</c:forEach>
+			</SELECT>
 		</td>
 		
 		<td style="width: 150px;padding-right: 10px;" align="right"><em>*</em>入职日期
@@ -402,27 +351,18 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 
 		
 		</table>
-		</div>
-		</fieldset>
-		<br/>
-		
-		<fieldset>
-		<legend  style="font-family: '宋体';color:#D0410A "></legend>
-		<div style="overflow: hidden;">
-		
-		</div>
-		</fieldset>
-		<br/>
-		
-		<fieldset>
-		<legend style="font-family: '宋体';color:#007BBB "></legend>
-		<div>
-		
 		<div style="height: 80px;text-align: center;vertical-align: middle;">
-		<input id="subbtn"  type="submit" value="确定" onclick="subcompanyreg()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
+			<input id="subbtn"  type="submit" value="确定" onclick="subcompanyreg()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
+			<input id="returnbtn"  type="button" value="返回" onclick="history.back()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 		</div>
 		</div>
 		</fieldset>
+		<br/>
+		
+
+		
+		
+		
 		<br/>
 		</div>
 </td>
@@ -439,15 +379,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </form>
 
 <center>
-<table>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">版权所有: 大连民族大学(c)2016</td>
-</tr>
-<tr>
-<td style="color:#0;font-size: 12px;" align="center">网址：<a href="">aaa</a></td>
-</tr>
-
-</table>
+<jsp:include page="../foot.jsp"></jsp:include>
 </center>
 
 </body>

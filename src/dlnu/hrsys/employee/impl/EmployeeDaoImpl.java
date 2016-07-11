@@ -198,6 +198,54 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return al;
 	}
 
+	@Override
+	public List findEmployeeByJobId(int jobId) {
+		// TODO Auto-generated method stub
+
+		List al = new ArrayList();
+		ResultSet rs = null;
+		String sql = "select * from employee where job_id=" + jobId;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Employee e = new Employee();
+				e.setId(rs.getInt("id"));
+				e.setName(rs.getString("name"));
+				e.setSex_id(rs.getInt("sex_id"));
+				e.setBirth_date(rs.getDate("birth_date"));
+				e.setId_card(rs.getString("id_card"));
+				e.setDepartment_id(rs.getInt("department_id"));
+				e.setJob_id(rs.getInt("job_id"));
+				e.setHire_date(rs.getDate("hire_date"));
+				e.setJoin_date(rs.getDate("hire_date"));
+				e.setHire_type_id(rs.getInt("hire_date"));
+				e.setHr_type_id(rs.getInt("hr_type_id"));
+				e.setPolitics_status_id(rs.getInt("politics_status_id"));
+				e.setNationality_id(rs.getInt("nationality_id"));
+				e.setNative_place(rs.getString("native_place"));
+				e.setPhone(rs.getString("phone"));
+				e.setEmail(rs.getString("email"));
+				e.setHeight_cm(rs.getInt("height_cm"));
+				e.setBlood_type_id(rs.getInt("blood_type_id"));
+				e.setMarital_status_id(rs.getInt("marital_status_id"));
+				e.setBirth_place(rs.getString("birth_place"));
+				e.setDomicile_place(rs.getString("domicile_place"));
+				e.setEducation_status_id(rs.getInt("education_status_id"));
+				e.setDegree_id(rs.getInt("degree_id"));
+				e.setGraduate_school(rs.getString("graduate_school"));
+				e.setMajor_name(rs.getString("major_name"));
+				e.setGraduate_date(rs.getDate("graduate_date"));
+				al.add(e);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return al;
+	}
+
 	public Employee findEmployeeById(int id) {
         ResultSet rs = null;
         Employee e = new Employee();

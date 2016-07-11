@@ -102,4 +102,20 @@ public class TypeUtil {
     public TypeGroup getLeaveReasonGroup() {
         return getGroup(TYPE_LEAVE_REASON);
     }
+    
+    public TypeGroup getLeaveDepartmentGroup() {
+        return dao.getLeaveDepartments();
+    }
+
+    public TypeGroup getLeaveJobGroup() {
+        return dao.getLeaveJobs();
+    }
+
+    public TypeGroup getDepartments() {
+        return dao.getDepartments();
+    }
+
+    public TypeGroup getJobs() {
+        return dao.getJobs();
+    }
 }

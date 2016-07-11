@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-06-30 15:21:25
+-- Generation Time: 2016-07-08 15:53:07
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -95,7 +95,16 @@ CREATE TABLE IF NOT EXISTS `employee` (
   KEY `marital_status_id` (`marital_status_id`),
   KEY `education_status_id` (`education_status_id`),
   KEY `degree_id` (`degree_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- 转存表中的数据 `employee`
+--
+
+INSERT INTO `employee` (`id`, `name`, `sex_id`, `birth_date`, `id_card`, `department_id`, `job_id`, `hire_date`, `join_date`, `hire_type_id`, `hr_type_id`, `politics_status_id`, `nationality_id`, `native_place`, `phone`, `email`, `height_cm`, `blood_type_id`, `marital_status_id`, `birth_place`, `domicile_place`, `education_status_id`, `degree_id`, `graduate_school`, `major_name`, `graduate_date`, `probation_status`) VALUES
+(1, '老虎会游泳', 2, '2016-07-11', '123', 1, 1, '2016-07-12', '2016-07-19', 5, 7, 8, 32, '11', '111', '1111', 111, 12, 19, '111111', '111111', 23, 30, '1111111', '11111111', '2016-07-27', 5),
+(2, '000', 1, '2016-07-05', '000', 1, 1, '2016-07-13', '2016-07-13', 4, 7, 8, 32, '', '', '0', 111, 12, 19, '', '', 23, 30, '', '', '2016-07-21', 4),
+(3, '000', 1, '2016-07-05', '000', 1, 1, '2016-07-13', '2016-07-13', 5, 7, 8, 32, '000', '000', '0', 111, 12, 19, '000', '000', 23, 30, '000', '000', '2016-07-21', 5);
 
 -- --------------------------------------------------------
 
@@ -108,8 +117,8 @@ CREATE TABLE IF NOT EXISTS `employee_leave_record` (
   `leave_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '离职时间',
   `leave_reason_id` int(11) NOT NULL COMMENT '离职类型',
   `destination` varchar(255) NOT NULL COMMENT '离职去向',
-  `join_hr_pool` bit(1) NOT NULL COMMENT '是否进入人才库',
-  `comment` varchar(255) NOT NULL COMMENT '备注',
+  `join_hr_pool` bit(1) DEFAULT NULL COMMENT '是否进入人才库',
+  `comment` varchar(255) DEFAULT NULL COMMENT '备注',
   `employee_id` int(11) NOT NULL COMMENT '员工编号',
   `name` varchar(40) NOT NULL COMMENT '姓名',
   `sex` varchar(40) NOT NULL COMMENT '性别',
@@ -155,14 +164,16 @@ CREATE TABLE IF NOT EXISTS `job` (
   KEY `name` (`name`),
   KEY `size` (`size`),
   KEY `type_id` (`type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='岗位' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='岗位' AUTO_INCREMENT=4 ;
 
 --
 -- 转存表中的数据 `job`
 --
 
 INSERT INTO `job` (`id`, `name`, `type_id`, `size`) VALUES
-(1, '清洁工', 34, 5);
+(1, '清洁工', 34, 5),
+(2, '秒', 36, 10),
+(3, '老虎会游泳', 36, 1);
 
 -- --------------------------------------------------------
 
@@ -193,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `type_group` (
   `name` varchar(40) NOT NULL COMMENT '名称',
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='类型组' AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='类型组' AUTO_INCREMENT=13 ;
 
 --
 -- 转存表中的数据 `type_group`
@@ -209,6 +220,7 @@ INSERT INTO `type_group` (`id`, `name`) VALUES
 (4, '政治面貌'),
 (5, '民族'),
 (2, '用工形式'),
+(12, '离职类型'),
 (6, '血型'),
 (11, '部门类型');
 
@@ -224,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `type_item` (
   `name` varchar(40) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `group` (`group_id`,`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
 
 --
 -- 转存表中的数据 `type_item`
@@ -268,7 +280,12 @@ INSERT INTO `type_item` (`id`, `group_id`, `name`) VALUES
 (33, 10, '管理'),
 (35, 10, '营销'),
 (37, 11, '公司'),
-(38, 11, '部门');
+(38, 11, '部门'),
+(39, 12, '主动辞职'),
+(42, 12, '开除'),
+(43, 12, '试用期未通过'),
+(40, 12, '辞退'),
+(41, 12, '退休');
 
 --
 -- 限制导出的表

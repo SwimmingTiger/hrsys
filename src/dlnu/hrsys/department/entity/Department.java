@@ -1,62 +1,93 @@
 package dlnu.hrsys.department.entity;
 
+import java.sql.Date;
+
 public class Department {
 	private int id;
 	private String name;
-	private int type_id;
+	private int typeId;
 	private String phone;
 	private String fax;
-	private String desc;
-	private String parent_id;
-	private String birth_date;
+	private String des;
+	private int parentId;
+	private Date dateFound;
 	
-	public int getId() {
-		return id;
+	public Department(){
+		fax = "无";
+		des = "无";
+		parentId = -1;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
+	
+	public Department(String name, int typeId, String phone, String fax,
+			String des, int parentId, Date dateFound){
 		this.name = name;
-	}
-	public int getType_id() {
-		return type_id;
-	}
-	public void setType_id(int type_id) {
-		this.type_id = type_id;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
+		this.typeId = typeId;
 		this.phone = phone;
-	}
-	public String getFax() {
-		return fax;
-	}
-	public void setFax(String fax) {
 		this.fax = fax;
-	}
-	public String getDesc() {
-		return desc;
-	}
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-	public String getParent_id() {
-		return parent_id;
-	}
-	public void setParent_id(String parent_id) {
-		this.parent_id = parent_id;
-	}
-	public String getBirth_date() {
-		return birth_date;
-	}
-	public void setBirth_date(String birth_date) {
-		this.birth_date = birth_date;
+		this.des = des;
+		this.parentId = parentId;
+		this.dateFound = dateFound;
+}
+	
+	public Department(int id, String name, int typeId, String phone, String fax,
+						String des, int parentId, Date dateFound){
+		this.id = id;
+		this.name = name;
+		this.typeId = typeId;
+		this.phone = phone;
+		this.fax = fax;
+		this.des = des;
+		this.parentId = parentId;
+		this.dateFound = dateFound;
 	}
 
+	public int getId() {
+		return this.id;
+	}
+	public String getName() {
+		return this.name;
+	}
+	public int getTypeId() {
+		return this.typeId;
+	}
+	public String getPhone() {
+		return this.phone;
+	}
+	public String getFax() {
+		return this.fax;
+	}
+	public int getParentId() {
+		return this.parentId;
+	}
+	public String getDesc() {
+		return this.des;
+	}
+	public Date getFoundDate() {
+		return this.dateFound;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}		
+	public void setName(String name) {
+		this.name = name;
+	}	
+	public void setTypeId(int type_id) {
+		this.typeId = type_id;
+	}	
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}	
+	public void setFax(String fax) {
+		this.fax = fax;
+	}	
+	public void setDesc(String desc) {
+		this.des = desc;
+	}	
+	public void setParentId(int parentId) {
+		this.parentId = parentId;
+	}	
+	public void setFoundDate(Date date) {
+		this.dateFound =  date;
+	}
 }

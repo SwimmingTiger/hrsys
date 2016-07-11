@@ -60,7 +60,7 @@ public class TypeDAO {
                 group.setId(groupId);
                 group.setName(rs.getString("name"));
 
-                PreparedStatement itemPst = conn.prepareStatement("SELECT * FROM type_item WHERE group_id = ?");
+                PreparedStatement itemPst = conn.prepareStatement("SELECT * FROM type_item WHERE group_id = ? ORDER BY id ASC");
                 itemPst.setInt(1, groupId);
                 ResultSet itemRs = itemPst.executeQuery();
 
@@ -74,6 +74,96 @@ public class TypeDAO {
             }
 
             pst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return group;
+    }
+    
+	public TypeGroup getLeaveJobs() {
+		TypeGroup group = new TypeGroup();
+
+		try {
+			PreparedStatement itemPst = conn
+					.prepareStatement("SELECT DISTINCT job FROM employee_leave_record ORDER BY id ASC");
+			ResultSet itemRs = itemPst.executeQuery();
+
+			while (itemRs.next()) {
+				TypeItem item = new TypeItem();
+				item.setName(itemRs.getString("job"));
+				group.add(item);
+			}
+
+			itemPst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return group;
+	}
+	
+	public TypeGroup getLeaveDepartments() {
+        TypeGroup group = new TypeGroup();
+
+		try {
+			PreparedStatement itemPst = conn
+					.prepareStatement("SELECT DISTINCT department FROM employee_leave_record ORDER BY id ASC");
+			ResultSet itemRs = itemPst.executeQuery();
+
+			while (itemRs.next()) {
+				TypeItem item = new TypeItem();
+				item.setName(itemRs.getString("department"));
+				group.add(item);
+			}
+
+			itemPst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return group;
+	}
+
+    public TypeGroup getDepartments() {
+        TypeGroup group = new TypeGroup();
+
+        try {
+            PreparedStatement itemPst = conn
+                    .prepareStatement("SELECT id,name FROM department ORDER BY id ASC");
+            ResultSet itemRs = itemPst.executeQuery();
+
+            while (itemRs.next()) {
+                TypeItem item = new TypeItem();
+                item.setId(itemRs.getInt("id"));
+                item.setName(itemRs.getString("name"));
+                group.add(item);
+            }
+
+            itemPst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return group;
+    }
+
+    public TypeGroup getJobs() {
+        TypeGroup group = new TypeGroup();
+
+        try {
+            PreparedStatement itemPst = conn
+                    .prepareStatement("SELECT id,name FROM job ORDER BY id ASC");
+            ResultSet itemRs = itemPst.executeQuery();
+
+            while (itemRs.next()) {
+                TypeItem item = new TypeItem();
+                item.setId(itemRs.getInt("id"));
+                item.setName(itemRs.getString("name"));
+                group.add(item);
+            }
+
+            itemPst.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
