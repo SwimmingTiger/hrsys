@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import dlnu.hrsys.employee.entity.Employee;
 import dlnu.hrsys.employee.impl.EmployeeDaoImpl;
@@ -64,7 +65,12 @@ public class EmployeeServlet extends HttpServlet {
 		String flag = request.getParameter("flag");
 
 		  if("add".equals(flag)){ 
-
+			  
+			  if(request.getParameter("birth_date").length() <= 0 || request.getParameter("hire_date").length() <= 0 || request.getParameter("join_date").length() <= 0){
+				  JOptionPane.showMessageDialog(null, "必填项不能为空！");
+				  request.getRequestDispatcher("/employee/add.jsp").forward(request,response); 
+			  }else{
+			  
 			  //int id=Integer.valueOf(request.getParameter("id")); 
 			  String name=request.getParameter("name");
 			  int sex_id=Integer.valueOf(request.getParameter("sex_id"));
@@ -81,7 +87,10 @@ public class EmployeeServlet extends HttpServlet {
 			  String native_place=request.getParameter("native_place");
 			  String phone=request.getParameter("phone");
 			  String email=request.getParameter("email");
-			  int height_cm=Integer.valueOf(request.getParameter("height_cm"));
+			  int height_cm=0;
+			  if(request.getParameter("height_cm").length() > 0){
+				  height_cm=Integer.valueOf(request.getParameter("height_cm"));
+			  }
 			  int blood_type_id=Integer.valueOf(request.getParameter("blood_type_id"));
 			  int marital_status_id=Integer.valueOf(request.getParameter("marital_status_id"));
 			  String birth_place=request.getParameter("birth_place");
@@ -90,7 +99,10 @@ public class EmployeeServlet extends HttpServlet {
 			  int degree_id=Integer.valueOf(request.getParameter("degree_id"));
 			  String graduate_school=request.getParameter("graduate_school");
 			  String major_name=request.getParameter("major_name");
-			  Date graduate_date=Date.valueOf(request.getParameter("graduate_date"));
+			  Date graduate_date=Date.valueOf("1990-01-01");
+			  if(request.getParameter("graduate_date").length() > 0){
+				  graduate_date=Date.valueOf(request.getParameter("graduate_date"));
+			  }
 			  		  
 			  e=new Employee(1,name,sex_id,birth_date,id_card,department_id,job_id,hire_date,join_date,hire_type_id,hr_type_id,
 			  politics_status_id,nationality_id,native_place,phone,email,height_cm,blood_type_id,marital_status_id,birth_place,
@@ -105,6 +117,7 @@ public class EmployeeServlet extends HttpServlet {
 				  session.setAttribute("Employee", e);
 				  request.getRequestDispatcher("/index.jsp").forward(request,response); 
 			  			}
+			  }
 		  }
 		  
 		  if("find".equals(flag)){
