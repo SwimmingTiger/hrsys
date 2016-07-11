@@ -25,6 +25,11 @@ public class TypeUtil {
     public static final int TYPE_DEPARTMENT = 11;
     public static final int TYPE_LEAVE_REASON = 12;
 
+    //正式员工
+    public static final int TYPE_NORMAL_EMPLOYEE = 3;
+    //试用期员工
+    public static final int TYPE_PROBATION_EMPLOYEE = 4;
+
     private static TypeUtil instance = null;
 
     private TypeDAO dao = null;
