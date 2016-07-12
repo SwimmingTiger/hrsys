@@ -124,8 +124,11 @@ public class EmployeeServlet extends HttpServlet {
 					  } else {
 						  boolean bool = edm.addEmployee(e);
 						  if (bool) {
-							  request.setAttribute("Employee", e);
-							  request.getRequestDispatcher("/index.jsp").forward(request, response);
+							  //request.setAttribute("Employee", e);
+							  String url = e.getHire_type_id() == TypeUtil.TYPE_NORMAL_EMPLOYEE ? "EmployeeServlet?flag=list_all" : "EmployeeServlet?flag=find";
+							  response.sendRedirect(url);
+						  } else {
+							  out.println("<script>alert('添加失败！');history.back();</script>");
 						  }
 					  }
 				  } catch (IllegalArgumentException ex) {

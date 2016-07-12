@@ -78,7 +78,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td align="center">
 	<a href="departmentsServlet.action?flag=allDepartments&edit_id=${department.id}&parent_id=${param.parent_id}">修改</a>
 	||
-	<a href="departmentsServlet.action?flag=del&uid=${department.id}&parent_id=${param.parent_id}" class="active">删除</a>
+	<a href="departmentsServlet.action?flag=del&uid=${department.id}&parent_id=${param.parent_id}" class="active" onclick="return confirm('确认删除？')">删除</a>
 	||
 	<a href="departmentsServlet.action?flag=allDepartments&parent_id=${department.id}">查看下级部门</a>
 	||

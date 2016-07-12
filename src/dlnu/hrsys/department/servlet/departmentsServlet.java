@@ -144,8 +144,7 @@ public class departmentsServlet extends HttpServlet {
 							request.getRequestDispatcher("/departments/departmentTable.jsp").forward(
 									request, response);
 						} else {
-							//转发 
-							System.out.print("fail");
+							response.getWriter().println("<script>alert('删除失败，该部门存在员工！');history.back();</script>");
 						}
 
 						break;

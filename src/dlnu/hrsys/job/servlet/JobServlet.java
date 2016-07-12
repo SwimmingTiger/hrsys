@@ -132,7 +132,7 @@ public class JobServlet extends HttpServlet {
 					request.setAttribute("allJob", list);
 					request.getRequestDispatcher("job/searchjob.jsp").forward(request,response);
 				}else{
-					response.sendRedirect("job/error.jsp");	
+					response.getWriter().println("<script>alert('删除失败，该岗位存在员工！');history.back();</script>");
 					
 				}
 				break;
