@@ -198,6 +198,25 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
+    public int getEmployeeSizeByJobId(int jobId) {
+        int size = 0;
+        ResultSet rs = null;
+        String sql = "select count(*) from employee where job_id=" + jobId;
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                size = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return size;
+    }
+
+    @Override
     public List findEmployeeByDepartmentId(int departmentId) {
         // TODO Auto-generated method stub
 
