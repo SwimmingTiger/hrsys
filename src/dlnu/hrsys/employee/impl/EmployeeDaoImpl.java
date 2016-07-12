@@ -260,6 +260,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
     //模糊查询
     public List<Employee> findEveryThing(int employee_id, String name, int department_id,
                                          int job_id, Date join_date1, Date join_date2, int hire_type_id) {
+
+        //备注：join_date参数实际是按hire_date查询的！
+
         List<Employee> result = new ArrayList<>();
         List<Object> param = new ArrayList<>();
         Employee e = null;
@@ -300,12 +303,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
                     join_date1 = tDate;
                 }
 
-                sql += " AND join_date BETWEEN ? AND ?";
+                sql += " AND hire_date BETWEEN ? AND ?";
                 param.add(join_date1);
                 param.add(join_date2);
 
             } else {
-                sql += " AND join_date = ?";
+                sql += " AND hire_date = ?";
                 param.add(join_date1);
             }
         }
