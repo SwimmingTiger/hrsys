@@ -25,7 +25,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <tr height="57">
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关申请信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。</div>
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">对公司的部门信息进行维护</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_title3.jpg"></td>
 </tr>
@@ -33,9 +33,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td width="9" background="<%=path %>/images/regimages/reg_left.jpg"></td>
 <td width="944">
 		<div id="regtddiv">
-		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体">注意：带有&nbsp;<font color="red">*</font>&nbsp;号的必须填写</div>
 		<fieldset>
-		<legend style="font-family: '宋体';color:#007BBB ">类型</legend>
+		<legend style="font-family: '宋体';color:#007BBB ">部门列表</legend>
 		<div>
 		<table border="0" style="line-height: 32px;" width="900" align="center" cellpadding="0" cellspacing="0">
 		

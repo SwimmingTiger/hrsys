@@ -17,6 +17,11 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><%=ptname %>-员工列表</title>
 	<jsp:include page="../import.jsp" />
+	<style>
+		.content_table th, .content_table td {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 <jsp:include page="../head.jsp" />
@@ -65,16 +70,18 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
                 </td></tr></table-->
 			</form>
 		<div>
-		<table border="1" style="line-height: 32px;" width="700" align="center" cellpadding="1" cellspacing="1">
+		<table class="table content_table" border="0" style="line-height: 32px;" width="700" align="center" cellpadding="1" cellspacing="1">
 		<tr>
-<th>员工编号</th><th>姓名</th><th>部门</th><th>岗位</th><th>操作</th>
+<th>员工编号</th><th>姓名</th><th>性别</th><th>部门</th><th>岗位</th><th>入职日期</th><th>操作</th>
 </tr>
 <c:forEach items="${emp_list}" var="emp">
 <tr>
-<td>${emp.id}</td>
-<td>${emp.name}</td>
+<td align="center">${emp.id}</td>
+<td align="center">${emp.name}</td>
+	<td align="center">${typeUtil.getItemName(emp.sex_id)}</td>
 	<td align="center">${typeUtil.getDepartmentName(emp.department_id)}</td>
 	<td align="center">${typeUtil.getJobName(emp.job_id)}</td>
+	<td align="center">${emp.hire_date}</td>
 		<td align="center">
 			<a href="leave/LeaveAdd.jsp?employee_id=${emp.id}">离职</a>
 			||

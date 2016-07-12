@@ -25,7 +25,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <tr height="57">
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">欢迎进入人事管理平台</div>
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">添加新岗位</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_title3.jpg"></td>
 </tr>

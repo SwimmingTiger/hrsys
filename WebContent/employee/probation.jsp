@@ -29,7 +29,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <tr height="57">
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">对员工的试用期信息进行维护</div>
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">对试用期员工的信息进行维护</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_title3.jpg"></td>
 </tr>

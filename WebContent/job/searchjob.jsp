@@ -24,7 +24,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <tr >
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg" style="line-height: 57px;text-indent: 45px;">
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。</div>
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">对公司的岗位信息进行维护</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_title3.jpg"></td>
 </tr>
@@ -32,7 +32,6 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td width="9" background="<%=path %>/images/regimages/reg_left.jpg"></td>
 <td width="944">
 		<div id="regtddiv">
-		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体">注意：带有&nbsp;<font color="red">*</font>&nbsp;号的必须填写</div>
 		<fieldset >
 		<legend style="font-family: '宋体';color:#007BBB "><a href="job/Job.jsp">·点击添加岗位信息</a></legend>
 		<legend style="font-family: '宋体';color:#007BBB ">·查询岗位信息（以下必填一个）</legend>
