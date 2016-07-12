@@ -74,8 +74,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 						<option value="${item.id}" <c:if test="${item.id == param.leave_reason_id}">selected="selected"</c:if>>${item.name}</option>
 					</c:forEach>
 				</select>
-				<input class="Wdate" type="text" onClick="WdatePicker()" style="width: 100px;height: 17px;" name="leave_time1" placeholder="开始时间">
-				<input class="Wdate" type="text" onClick="WdatePicker()" style="width: 100px;height: 17px;" name="leave_time2" placeholder="结束时间">
+				<input class="Wdate" type="text" onClick="WdatePicker()" style="width: 100px;height: 17px;" name="leave_time1" placeholder="开始时间" value="${param.leave_time1}">
+				<input class="Wdate" type="text" onClick="WdatePicker()" style="width: 100px;height: 17px;" name="leave_time2" placeholder="结束时间" value="${param.leave_time2}">
 			</p>
 			<p>
 				<input id="subbtn"  type="submit" value="查询" onclick="subcompanyreg()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">

@@ -40,7 +40,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right">岗位名称</td>
-		<td style="padding-left: 10px;"><input type="text" style="width: 280px;"name="name"></td>
+		<td style="padding-left: 10px;"><input type="text" style="width: 280px;"name="name" value="${param.name}"></td>
 		</tr>
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right">岗位类型</td>
@@ -48,7 +48,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<select name="type_id">
 			<option value="0">全部</option>
    			<c:forEach items="${typeUtil.jobTypeGroup}" var="item">
-				<option value="${item.id}">${item.name}</option>
+				<option value="${item.id}" <c:if test="${item.id == param.type_id}">selected="selected"</c:if>>${item.name}</option>
 			</c:forEach>
 		</select>
 		</td>
