@@ -46,7 +46,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </tr>
 <tr>
 <td width="9" background="<%=path %>/images/regimages/reg_left.jpg"></td>
-<td width="944">
+<td width="954">
 		<div id="regtddiv">
 		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体"><font color="red"></font></div>
 		<fieldset>
@@ -89,9 +89,9 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</td></tr></table-->
 		</form>
 		<br>
-		<table  class="table"   style="line-height: 32px;" width="800" align="center" cellpadding="1" cellspacing="1">
+		<table  class="table"   style="line-height: 32px;" width="900" align="center" cellpadding="1" cellspacing="1">
 		<tr>
-<th class="infor_th">员工编号</th><th class="infor_th"  style=width:70px;>姓名</th><th class="infor_th">部门名称</th><th class="infor_th">岗位名称</th><th class="infor_th" style=width:120px>离职类型</th><th class="infor_th">离职时间</th><th class="infor_th">离职去向</th><th width="120px" class="infor_th">操作</th>
+<th class="infor_th">员工编号</th><th class="infor_th"  style=width:70px;>姓名</th><th class="infor_th">部门名称</th><th class="infor_th">岗位名称</th><th class="infor_th" style=width:120px>离职类型</th><th class="infor_th">离职时间</th><th class="infor_th">离职去向</th><th width="130px" class="infor_th">操作</th>
 </tr>
 <c:forEach items="${sketchy}" var="leave">
 <tr>

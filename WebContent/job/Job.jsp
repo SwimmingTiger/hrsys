@@ -35,7 +35,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<div id="regtddiv">
 		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体">注意：带有&nbsp;<font color="red">*</font>&nbsp;号的必须填写</div>
 		<fieldset>
-		<legend style="font-family: '宋体';color:#007BBB ">添加岗位信息(*号位必填项)</legend>
+		<legend style="font-family: '宋体';color:#007BBB ">添加岗位信息</legend>
 		<div>
 		<table border="0" style="line-height: 32px;" align="center" cellpadding="0" cellspacing="0">
 		

@@ -53,7 +53,7 @@
 		}
 	</style>
 </head>
-<body style="background:url(../images/bg11.jpg)">
+<body>
 <jsp:include page="../head.jsp" />
 <form method="post" name="" action="">
 	<input type="hidden" name="methods" id="methods">
