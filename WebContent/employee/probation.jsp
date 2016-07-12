@@ -87,7 +87,9 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 				 <option value="5">不予录用</option>
 		</SELECT></td>
 		<td align="center">
-		<input	type="submit" value="确定" >
+			<input	type="submit" value="确定" >
+			||
+			<a href="EmployeeServlet?flag=detail&id=${emp.id}">查看详细信息</a>
 		</td>
 </tr></form>
 </c:forEach>

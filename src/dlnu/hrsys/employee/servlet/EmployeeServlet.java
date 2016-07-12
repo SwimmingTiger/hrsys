@@ -198,7 +198,14 @@ public class EmployeeServlet extends HttpServlet {
 				  request.getRequestDispatcher("/employee/probation.jsp").forward(request, response);
 			  }
           }
-		  
+
+			if("detail".equals(flag)) {
+				int id = Integer.parseInt(request.getParameter("id"));
+				Employee employee = edm.findEmployeeById(id);
+				request.setAttribute("employee", employee);
+				request.getRequestDispatcher("/employee/DetailInfo.jsp").forward(request, response);
+			}
+
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

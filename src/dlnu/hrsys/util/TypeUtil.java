@@ -47,7 +47,11 @@ public class TypeUtil {
     }
     
     public static String getItemName(int itemId) throws DBUtil.DBException {
-    	return getInstance().getItem(itemId).getName();
+        try {
+            return getInstance().getItem(itemId).getName();
+        } catch (NullPointerException e) {
+            return "";
+        }
     }
 
     @Nullable

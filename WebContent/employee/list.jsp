@@ -77,6 +77,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 	<td align="center">${typeUtil.getJobName(emp.job_id)}</td>
 		<td align="center">
 			<a href="leave/LeaveAdd.jsp?employee_id=${emp.id}">离职</a>
+			||
+			<a href="EmployeeServlet?flag=detail&id=${emp.id}">查看详细信息</a>
 		</td>
 </tr>
 </c:forEach>
