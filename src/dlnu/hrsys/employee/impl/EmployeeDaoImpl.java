@@ -197,6 +197,28 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return al;
     }
 
+    @Override
+    public List findEmployeeByDepartmentId(int departmentId) {
+        // TODO Auto-generated method stub
+
+        List al = new ArrayList();
+        ResultSet rs = null;
+        String sql = "select * from employee where department_id=" + departmentId;
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Employee e = getResult(rs);
+                al.add(e);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return al;
+    }
+
     public Employee findEmployeeById(int id) {
         ResultSet rs = null;
         Employee e = new Employee();

@@ -20,5 +20,7 @@ public interface EmployeeDao {
 
 	List findEmployeeByJobId(int jobId);
 
+	List findEmployeeByDepartmentId(int departmentId);
+
 	public Employee findEmployeeById(int id);
 }

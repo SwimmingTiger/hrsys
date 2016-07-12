@@ -81,6 +81,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 	<a href="departmentsServlet.action?flag=del&uid=${department.id}&parent_id=${param.parent_id}" class="active">删除</a>
 	||
 	<a href="departmentsServlet.action?flag=allDepartments&parent_id=${department.id}">查看下级部门</a>
+	||
+	<a href="departmentsServlet.action?flag=find_emp&department_id=${department.id}">查看该部门员工</a>
 </td>
 </c:if>
 <c:if test="${param.edit_id == department.id}">
