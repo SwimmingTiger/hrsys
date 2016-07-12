@@ -13,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dlnu.hrsys.department.dao.DepartmentsDAO;
 import dlnu.hrsys.department.entity.Department;
@@ -55,8 +54,7 @@ public class departmentsServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		
-	//	HttpSession session = request.getSession(true);
+
 		String flag = request.getParameter("flag");
 
 		int parent_id = 0;

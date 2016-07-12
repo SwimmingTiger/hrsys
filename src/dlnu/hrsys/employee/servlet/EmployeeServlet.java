@@ -11,8 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 import dlnu.hrsys.employee.entity.Employee;
 import dlnu.hrsys.employee.impl.EmployeeDaoImpl;
@@ -61,8 +59,7 @@ public class EmployeeServlet extends HttpServlet {
 		
 		try {
 			edm = new EmployeeDaoImpl();
-	
-		HttpSession session = request.getSession(true);
+
 		Employee e;
 		String flag = request.getParameter("flag");
 
@@ -116,7 +113,7 @@ public class EmployeeServlet extends HttpServlet {
 			  
 			  boolean bool=edm.addEmployee(e); 
 			  if(bool){ 
-				  session.setAttribute("Employee", e);
+				  request.setAttribute("Employee", e);
 				  request.getRequestDispatcher("/index.jsp").forward(request,response); 
 			  			}
 			  }
@@ -125,18 +122,18 @@ public class EmployeeServlet extends HttpServlet {
 		  if("find".equals(flag)){
 			  List list = new ArrayList();		
 			  list = edm.findEmployeeByHire_Id(4);
-			  session.setAttribute("emp_linshi", list);
+			  request.setAttribute("emp_linshi", list);
 			  request.getRequestDispatcher("/employee/probation.jsp").forward(request,response); 
 		  }
 
 			if("list_all".equals(flag)){
 				List list = new ArrayList();
 				list = edm.findEmployeeByHire_Id(3);
-				session.setAttribute("emp_list", list);
+				request.setAttribute("emp_list", list);
 				request.getRequestDispatcher("/employee/list.jsp").forward(request,response);
 			}
 
-			if("search_all".equals(flag)){
+			if("search_all".equals(flag) || "search_probation".equals(flag)){
 				int employee_id = 0;
 				String name = null;
 
@@ -175,10 +172,17 @@ public class EmployeeServlet extends HttpServlet {
 				}
 
 
-				List<Employee> al = edm.findEveryThing(employee_id, name, department_id, job_id, join_date1, join_date2, TypeUtil.TYPE_NORMAL_EMPLOYEE);
 
-				session.setAttribute("emp_list", al);
-				request.getRequestDispatcher("/employee/list.jsp").forward(request,response);
+
+				if ("search_all".equals(flag)) {
+					List<Employee> al = edm.findEveryThing(employee_id, name, department_id, job_id, join_date1, join_date2, TypeUtil.TYPE_NORMAL_EMPLOYEE);
+					request.setAttribute("emp_list", al);
+					request.getRequestDispatcher("/employee/list.jsp").forward(request, response);
+				} else {
+					List<Employee> al = edm.findEveryThing(employee_id, name, department_id, job_id, join_date1, join_date2, TypeUtil.TYPE_PROBATION_EMPLOYEE);
+					request.setAttribute("emp_linshi", al);
+					request.getRequestDispatcher("/employee/probation.jsp").forward(request, response);
+				}
 			}
 		  
 		  if("update".equals(flag)) {
