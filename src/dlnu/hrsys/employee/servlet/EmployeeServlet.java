@@ -119,7 +119,7 @@ public class EmployeeServlet extends HttpServlet {
 					  int empSize = edm.getEmployeeSizeByJobId(e.getJob_id());
 					  Job job = JobDAOFactory.getJobDAO().findJobById(e.getJob_id());
 
-					  if (empSize >= job.getSize()) {
+					  if (job.getSize() > 0 && empSize >= job.getSize()) {
 						  out.println("<script>alert('该岗位员工人数超过限制！');history.back();</script>");
 					  } else {
 						  boolean bool = edm.addEmployee(e);

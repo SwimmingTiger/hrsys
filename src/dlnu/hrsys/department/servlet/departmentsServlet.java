@@ -55,6 +55,8 @@ public class departmentsServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=utf-8");
+
 
 		String flag = request.getParameter("flag");
 
@@ -80,40 +82,45 @@ public class departmentsServlet extends HttpServlet {
 						break;
 					}
 					case "add": {
-						System.out.print("into add   ");
-						String dname = request.getParameter("name");
-						int dtypeId = Integer.valueOf(request.getParameter("typeId"));
-						String dphone = request.getParameter("phone");
-						String dfax = request.getParameter("fax");
-						String ddesc = request.getParameter("des");
-						int dparentId = 0;
-						Date ddate = Date.valueOf(request.getParameter("date"));
 						try {
-							dparentId = Integer.valueOf(request.getParameter("parentId"));
-						} catch (Exception ex) {
-							// ignore
-						}
+							System.out.print("into add   ");
+							String dname = request.getParameter("name");
+							int dtypeId = Integer.valueOf(request.getParameter("typeId"));
+							String dphone = request.getParameter("phone");
+							String dfax = request.getParameter("fax");
+							String ddesc = request.getParameter("des");
+							int dparentId = 0;
+							Date ddate = Date.valueOf(request.getParameter("date"));
+							try {
+								dparentId = Integer.valueOf(request.getParameter("parentId"));
+							} catch (Exception ex) {
+								// ignore
+							}
 
+							if (dname != null && dname.length() > 0) {
 
-						Department d = new Department();
-						d.setName(dname);
-						d.setTypeId(dtypeId);
-						d.setPhone(dphone);
-						d.setFax(dfax);
-						d.setDesc(ddesc);
-						d.setParentId(dparentId);
-						d.setFoundDate(ddate);
+								Department d = new Department();
+								d.setName(dname);
+								d.setTypeId(dtypeId);
+								d.setPhone(dphone);
+								d.setFax(dfax);
+								d.setDesc(ddesc);
+								d.setParentId(dparentId);
+								d.setFoundDate(ddate);
 
-						boolean bool = dD.addDepartment(d);
+								boolean bool = dD.addDepartment(d);
 
-						if (bool) {
-							//重定向 转入成功页面
-							System.out.print("success");
-							request.getRequestDispatcher("../departments/addDepartmentPage.jsp").forward(
-									request, response);
-						} else {
-							//转发 
-							System.out.print("fail");
+								if (bool) {
+									//重定向 转入成功页面
+									response.sendRedirect("../servlet/departmentsServlet.action?flag=allDepartments");
+								} else {
+									response.getWriter().println("<script>alert('添加失败！');history.back();</script>");
+								}
+							} else {
+								response.getWriter().println("<script>alert('部门名称不能为空！');history.back();</script>");
+							}
+						} catch (IllegalArgumentException e) {
+							response.getWriter().println("<script>alert('数字或日期格式不正确！');history.back();</script>");
 						}
 
 						break;

@@ -61,7 +61,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right">岗位编制</td>
-		<td style="padding-left: 10px; width: 440px"><input type="text" style="width: 300px;" name="size" ></td>
+		<td style="padding-left: 10px; width: 440px"><input type="text" style="width: 300px;" name="size" placeholder="留空不限制"></td>
 		<td style="padding-left: 10px; color: #808080;font-size: 12px;"><label style="padding-left: 5px;color: red"  id="companyphone_tit"></label> </td>
 		</tr>
 		

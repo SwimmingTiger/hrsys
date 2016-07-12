@@ -51,6 +51,7 @@ public class JobServlet extends HttpServlet {
 		System.out.println(flag);
 		//
 		List list = null;
+		PrintWriter out = response.getWriter();
 		
 		
 		try {
@@ -60,40 +61,51 @@ public class JobServlet extends HttpServlet {
 			switch(flag){
 			//添加岗位
 			case "add":
+				try {
 				System.out.println("this is add job");
 				String name = request.getParameter("name");
 				System.out.println(name);
 				int type_id = Integer.valueOf(request.getParameter("type_id"));
-				int size = Integer.valueOf(request.getParameter("size"));
-				Job j = new Job(name,type_id,size);
-				System.out.println("job name:"+name+"type_id:"+type_id+"size:"+size);
-				boolean index = jd.addJob(j);
-				System.out.println(index);
-				if(index){
-					
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UTF-8");
-					PrintWriter out1 = response.getWriter();
-					out1.println("<script type='text/javascript'>"
-							+ "alert('添加成功！');"
-							+ "location='JobServlet?flag=find';"
-							+ "</script>");
-					out1.println("</HTML>");
-					out1.flush();
-					out1.close();
-				
-				}else{
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UTF-8");
-					PrintWriter out1 = response.getWriter();
-					out1.println("<script type='text/javascript'>"
-							+ "alert('添加失败！');"
-							+ "location='job/job.jsp';"
-							+ "</script>");
-					out1.println("</HTML>");
-					out1.flush();
-					out1.close();
-					
+				int size = 0;
+					if (request.getParameter("size").length() > 0) {
+						Integer.valueOf(request.getParameter("size"));
+					}
+
+					if (name != null && name.length() > 0) {
+						Job j = new Job(name, type_id, size);
+						boolean index = jd.addJob(j);
+						System.out.println(index);
+						if (index) {
+
+							response.setContentType("text/html");
+							response.setCharacterEncoding("UTF-8");
+							PrintWriter out1 = response.getWriter();
+							out1.println("<script type='text/javascript'>"
+									+ "alert('添加成功！');"
+									+ "location='JobServlet?flag=find';"
+									+ "</script>");
+							out1.println("</HTML>");
+							out1.flush();
+							out1.close();
+
+						} else {
+							response.setContentType("text/html");
+							response.setCharacterEncoding("UTF-8");
+							PrintWriter out1 = response.getWriter();
+							out1.println("<script type='text/javascript'>"
+									+ "alert('添加失败！');"
+									+ "location='job/job.jsp';"
+									+ "</script>");
+							out1.println("</HTML>");
+							out1.flush();
+							out1.close();
+
+						}
+					} else {
+						out.println("<script>alert('岗位名称不能为空！');history.back();</script>");
+					}
+				} catch (IllegalArgumentException ex) {
+					out.println("<script>alert('数字或日期格式不正确！');history.back();</script>");
 				}
 				break;
 				//修改记录
