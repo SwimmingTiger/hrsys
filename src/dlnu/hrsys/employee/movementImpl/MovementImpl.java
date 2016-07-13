@@ -1,15 +1,16 @@
 package dlnu.hrsys.employee.movementImpl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import dlnu.hrsys.employee.entity.Employee;
 import dlnu.hrsys.employee.movement.Movement;
 import dlnu.hrsys.employee.movementDao.MovementDao;
 import dlnu.hrsys.util.DBUtil;
 import dlnu.hrsys.util.DBUtil.DBException;
+
+import javax.xml.transform.Result;
 
 public class MovementImpl implements MovementDao {
 	
@@ -66,5 +67,39 @@ public class MovementImpl implements MovementDao {
 		}
 		
 		return flag;
+	}
+
+	@Override
+	public List<Movement> findAll() {
+		List<Movement> list = new ArrayList<>();
+		String sql = "SELECT * FROM movement ORDER BY movement_time ASC";
+
+		try {
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				Movement movement = new Movement();
+				movement.setId(rs.getInt("id"));
+				movement.setEmployee_id(rs.getInt("employee_id"));
+				movement.setMovement_reason(rs.getString("movement_reason"));
+				movement.setMovement_time(rs.getDate("movement_time"));
+
+				movement.setFront_movement_department(rs.getString("front_movement_department"));
+				movement.setMovement_department(rs.getString("movement_department"));
+				movement.setMovement_department_type(rs.getInt("movement_department_type"));
+
+				movement.setFront_movement_job(rs.getString("front_movement_job"));
+				movement.setMovement_job(rs.getString("movement_job"));
+				movement.setMovement_job_type(rs.getInt("movement_job_type"));
+
+				list.add(movement);
+			}
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+
+		return list;
 	}
 }

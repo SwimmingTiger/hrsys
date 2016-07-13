@@ -142,6 +142,8 @@ position:relative;
 					<input type="button" value="正式员工报表" onclick="location='../EmployeeServlet?flag=search_all&join_date1=<%=dateStart%>&join_date2=<%=dateEnd%>'" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 					<input type="button" value="试用期员工报表" onclick="location='../EmployeeServlet?flag=search_probation&join_date1=<%=dateStart%>&join_date2=<%=dateEnd%>'" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 					<input type="button" value="离职员工报表" onclick="location='../LeaveServlet.action?flag=findlike&leave_time1=<%=dateStart%>&leave_time2=<%=dateEnd%>'" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
+					<input type="button" value="部门/岗位调动记录" onclick="location='../MovementServlet.action?flag=find_all'" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
+
 				</div>
 			</div>
 		</div>

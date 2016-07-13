@@ -463,7 +463,7 @@ public class LeaveImpl implements LeaveDao {
 		Leave l = new Leave();
 		
 		try{	
-				pstmt = conn.prepareStatement("select * from empolyee where department = ?");
+				pstmt = conn.prepareStatement("select * from employee_leave_record where department = ?");
 				pstmt.setString(1, department);
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next()){
@@ -517,7 +517,7 @@ public class LeaveImpl implements LeaveDao {
 		Leave l=new Leave();
 		
 		try{	
-				pstmt = conn.prepareStatement("select * from empolyee where employee_id = ?");
+				pstmt = conn.prepareStatement("select * from employee_leave_record where employee_id = ?");
 				pstmt.setInt(1, employee_id);
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next()){
@@ -571,7 +571,7 @@ public class LeaveImpl implements LeaveDao {
 		Leave l = new Leave();
 		
 		try{	
-			pstmt = conn.prepareStatement("select * from empolyee where name = ?");
+			pstmt = conn.prepareStatement("select * from employee_leave_record where name = ?");
 			pstmt.setString(1, name);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){

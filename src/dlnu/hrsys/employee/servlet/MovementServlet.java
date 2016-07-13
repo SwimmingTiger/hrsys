@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,6 +51,8 @@ public class MovementServlet extends HttpServlet {
 
 			// 添加调转员工信息
 			if ("add".equals(flag)) {
+				try {
+
 				int id = 0; //id是自动增长的
 
 				int employee_id = Integer.valueOf(request.getParameter("employee_id"));
@@ -58,29 +61,54 @@ public class MovementServlet extends HttpServlet {
 
 				String front_movement_department = TypeUtil.getInstance().getDepartmentName(employee.getDepartment_id());
 				int movement_department_id = Integer.valueOf(request.getParameter("department_id"));
-				String movement_department = TypeUtil.getInstance().getDepartmentName(movement_department_id);
+				String movement_department = "";
+				try {
+					movement_department = TypeUtil.getInstance().getDepartmentName(movement_department_id);
+				} catch (Exception ex) {
+					// ignore
+				}
 				int movement_department_type = Integer.valueOf(request.getParameter("movement_department_type"));
 
 				String front_movement_job = TypeUtil.getInstance().getJobName(employee.getJob_id());
 				int movement_job_id = Integer.valueOf(request.getParameter("job_id"));
-				String movement_job = TypeUtil.getInstance().getJobName(movement_job_id);
+				String movement_job = "";
+				try {
+					movement_job = TypeUtil.getInstance().getJobName(movement_job_id);
+				} catch (Exception ex) {
+					// ignore
+				}
 				int movement_job_type = Integer.valueOf(request.getParameter("movement_job_type"));
 
 				String movement_reason = request.getParameter("movement_reason");
 				Date movement_time = Date.valueOf(request.getParameter("movement_time"));
-				
-				Movement l = new Movement(id, employee_id, front_movement_department,
-						movement_department, movement_department_type,
-						front_movement_job, movement_job, movement_job_type,
-						movement_reason, movement_time);
 
-				boolean bool = md.addMovement(l, employee, movement_department_id, movement_job_id);
-
-				if (bool) {
-					response.sendRedirect("EmployeeServlet?flag=list_all");
+				if (movement_department_id == 0 && movement_job_id == 0) {
+					response.getWriter().println("<script>alert('部门和岗位均未调转！');history.back();</script>");
 				} else {
-					response.getWriter().println("<script>alert('添加失败！');history.back();</script>");
+
+					Movement l = new Movement(id, employee_id, front_movement_department,
+							movement_department, movement_department_type,
+							front_movement_job, movement_job, movement_job_type,
+							movement_reason, movement_time);
+
+					boolean bool = md.addMovement(l, employee, movement_department_id, movement_job_id);
+
+					if (bool) {
+						response.sendRedirect("MovementServlet.action?flag=find_all");
+					} else {
+						response.getWriter().println("<script>alert('添加失败！');history.back();</script>");
+					}
 				}
+				} catch (IllegalArgumentException ex) {
+					response.getWriter().println("<script>alert('数字或日期格式不正确！');history.back();</script>");
+				}
+			}
+
+			if ("find_all".equals(flag)) {
+				List<Movement> movementList = md.findAll();
+				request.setAttribute("movementList", movementList);
+				//System.out.println(movementList.toString());
+				request.getRequestDispatcher("/movement/list.jsp").forward(request, response);
 			}
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block

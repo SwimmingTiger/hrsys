@@ -1,9 +1,18 @@
 package dlnu.hrsys.util;
 
 import com.sun.istack.internal.Nullable;
+import dlnu.hrsys.employee.dao.EmployeeDao;
+import dlnu.hrsys.employee.entity.Employee;
+import dlnu.hrsys.employee.impl.EmployeeDaoImpl;
+import dlnu.hrsys.employee.leave.Leave;
+import dlnu.hrsys.employee.leaveDao.LeaveDao;
+import dlnu.hrsys.employee.leaveDaoFactory.LeaveDaoFactory;
+import dlnu.hrsys.employee.leaveImpl.LeaveImpl;
 import dlnu.hrsys.util.typeutil.dao.TypeDAO;
 import dlnu.hrsys.util.typeutil.entity.TypeGroup;
 import dlnu.hrsys.util.typeutil.entity.TypeItem;
+
+import java.util.List;
 
 /**
  * 类型工具类
@@ -152,5 +161,34 @@ public class TypeUtil {
 
     public TypeGroup getJobMovementGroup() {
         return getGroup(TYPE_JOB_MOVEMENT);
+    }
+
+    public String getEmployeeName(int employee_id) {
+        String name = "";
+
+        try {
+            EmployeeDao ed = new EmployeeDaoImpl();
+            Employee employee = ed.findEmployeeById(employee_id);
+
+            if (employee != null && employee.getName() != null) {
+                name = employee.getName();
+            } else {
+                LeaveDao ld = LeaveDaoFactory.getLeaveDao();
+                List<Leave> leaveList = ld.findE_Employee_id(employee_id);
+
+                if (leaveList != null && leaveList.size() > 0) {
+                    Leave leave = leaveList.get(0);
+
+                    if (leave != null && leave.getName() != null) {
+                        name = leave.getName();
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return name;
     }
 }
