@@ -20,11 +20,19 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </head>
 <body>
 <jsp:include page="../head.jsp" />
+<style>
+	.content_table th, .content_table td {
+		text-align: center;
+	}
+	.search_form {
+		text-align: center;
+	}
+</style>
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center">
 <tr >
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg" style="line-height: 57px;text-indent: 45px;">
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。</div>
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">对公司的岗位信息进行维护</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_title3.jpg"></td>
 </tr>
@@ -32,38 +40,22 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td width="9" background="<%=path %>/images/regimages/reg_left.jpg"></td>
 <td width="944">
 		<div id="regtddiv">
-		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体">注意：带有&nbsp;<font color="red">*</font>&nbsp;号的必须填写</div>
 		<fieldset >
-		<legend style="font-family: '宋体';color:#007BBB "><a href="job/Job.jsp">·点击添加岗位信息</a></legend>
-		<legend style="font-family: '宋体';color:#007BBB ">·查询岗位信息（以下必填一个）</legend>
+		<legend style="font-family: '宋体';color:#007BBB "><a href="job/Job.jsp">·点击添加岗位</a></legend>
+		<legend style="font-family: '宋体';color:#007BBB ">·查询岗位信息</legend>
+			<div class="search_form">
 		<form method="post" action="<%=path%>/JobServlet?flag=find">
-		<table border="0" style="line-height: 32px; height: 124px" align="center" cellpadding="0" cellspacing="0">
-		
-		<tr>
-		<td style="width: 150px;padding-right: 10px;" align="right">岗位名称</td>
-		<td style="padding-left: 10px;"><input type="text" style="width: 280px;"name="name"></td>
-		</tr>
-		<tr>
-		<td style="width: 150px;padding-right: 10px;" align="right">岗位类型</td>
-		<td nowrap="nowrap" colspan="2" style="padding-left: 10px;">
-		<select name="type_id">
+			岗位名称:<input type="text" style="width: 180px;" name="name" value="${param.name}">
+			岗位类型:
+		<select name="type_id" style="width: 180px;">
 			<option value="0">全部</option>
    			<c:forEach items="${typeUtil.jobTypeGroup}" var="item">
-				<option value="${item.id}">${item.name}</option>
+				<option value="${item.id}" <c:if test="${item.id == param.type_id}">selected="selected"</c:if>>${item.name}</option>
 			</c:forEach>
 		</select>
-		</td>
-		</tr>
-		<tr>
-		<td>
-		<div style="position:relative;left:160px;top:20px;">
 		<input id="search" type="submit" value="查询" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
-		</div>
-		
-		</td>
-		</tr>
-		</table>
 		</form>
+				</div>
 		<br>
 		<table class="table" width="1000px"; style="position:relative; top:20px;">
           <tr>
@@ -96,7 +88,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<td align="center"><input type="text" name="name" value="${job.name}"></td>
 		<td align="center">
 			<!--input type="text" value="${typeUtil.getItemName(job.type_id)}" readonly="readonly"-->
-			<select name="type_id">
+			<select name="type_id" style="width: 80px;">
    				<c:forEach items="${typeUtil.jobTypeGroup}" var="item">
 					<option value="${item.id}" <c:if test="${item.id == job.type_id}">selected="selected"</c:if>>${item.name}</option>
 				</c:forEach>

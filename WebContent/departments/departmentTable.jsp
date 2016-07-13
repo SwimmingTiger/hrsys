@@ -18,6 +18,14 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><%=ptname %>-编号</title>
 <jsp:include page="../import.jsp" />
+	<style>
+		.content_table th, .content_table td {
+			text-align: center;
+		}
+		.search_form {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 <jsp:include page="../head.jsp" />
@@ -25,7 +33,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <tr height="57">
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关申请信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。</div>
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">对公司的部门信息进行维护</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_title3.jpg"></td>
 </tr>
@@ -33,18 +41,17 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td width="9" background="<%=path %>/images/regimages/reg_left.jpg"></td>
 <td width="944">
 		<div id="regtddiv">
-		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体">注意：带有&nbsp;<font color="red">*</font>&nbsp;号的必须填写</div>
 		<fieldset>
-		<legend style="font-family: '宋体';color:#007BBB ">类型</legend>
+			<legend style="font-family: '宋体';color:#007BBB "><a href="<%=path%>/departments/addDepartmentPage.jsp">·点击添加部门</a></legend>
+			<legend style="font-family: '宋体';color:#007BBB ">·查询部门信息</legend>
 		<div>
-		<table border="0" style="line-height: 32px;" width="900" align="center" cellpadding="0" cellspacing="0">
+		<table class="content_table" border="0" style="line-height: 32px;" width="900" align="center" cellpadding="0" cellspacing="0">
 		
-	<div style="height: 40px; vertical-align: middle;">
+	<div class="search_form" style="height: 40px; vertical-align: middle;">
 	<form method="post" id="search_form"  action="departmentsServlet.action?flag=seek">
+		名称:<input type="text" style="width: 150px;" name="name" value="${param.name}">
 		
-		名称:<input type="text" style="width: 100px;" id="" name="name" value="${param.name}">
-		
-		类型:<SELECT name="type" id="">
+		类型:<SELECT name="type" style="width: 150px;">
 				 <option value="0">全部</option>
 				 <!--option value="1" selected>编号</option>
 				 <option value="2">部门名称</option>
@@ -54,14 +61,13 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 			</c:forEach>
 				
 		</SELECT>
-		<input id="inquiry"  type="submit" value="查询" onclick="subcompanyreg()" style="position: relative;top: 3%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
-		<input id="add"  type="button" value="增加" onclick="location='<%=path%>/departments/addDepartmentPage.jsp'" style="position: relative;top: 3%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
+		<input id="inquiry"  type="submit" value="查询" onclick="subcompanyreg()" style="position: relative;top: 3%; " class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 		</form>
 		</div>
        </td>
 		</tr>
 		
-<th>编号</th><th>部门名称</th><th>类型</th><th>电话</th><th>传真</th><th>描述</th><th>成立日期</th><th>操作</th>
+<th>编号</th><th style="width: 120px">部门名称</th><th>类型</th><th style="width: 80px">电话</th><th style="width: 80px">传真</th><th style="width: 120px;">描述</th><th>成立日期</th><th>操作</th>
 </tr>
 
 <c:forEach items="${alldepartments}" var="department">
@@ -75,12 +81,14 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td align="center">${department.fax}</td>
 <td align="center">${department.desc}</td>
 <td align="center">${department.foundDate}</td>
-<td align="center">
+<td align="center" style="width: 200px;">
 	<a href="departmentsServlet.action?flag=allDepartments&edit_id=${department.id}&parent_id=${param.parent_id}">修改</a>
 	||
-	<a href="departmentsServlet.action?flag=del&uid=${department.id}&parent_id=${param.parent_id}" class="active">删除</a>
+	<a href="departmentsServlet.action?flag=del&uid=${department.id}&parent_id=${param.parent_id}" class="active" onclick="return confirm('确认删除？')">删除</a>
 	||
-	<a href="departmentsServlet.action?flag=allDepartments&parent_id=${department.id}">查看下级部门</a>
+	<a href="departmentsServlet.action?flag=allDepartments&parent_id=${department.id}">下级部门</a>
+	||
+	<a href="departmentsServlet.action?flag=find_emp&department_id=${department.id}">查看员工</a>
 </td>
 </c:if>
 <c:if test="${param.edit_id == department.id}">
@@ -89,7 +97,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td align="center">${department.id}</td>
 <td align="center"><input type="text" name="name" style="width: 100px;" value="${department.name}"></td>
 <td align="center">
-	<select name="typeId">
+	<select name="typeId" style="width: 80px;">
    		<c:forEach items="${typeUtil.departmentGroup}" var="item">
 			<option value="${item.id}" <c:if test="${item.id == department.typeId}">selected="selected"</c:if>>${item.name}</option>
 		</c:forEach>
@@ -100,7 +108,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td align="center"><input type="text" name="desc" style="width: 100px;" value="${department.desc}"></td>
 <td align="center"><input type="text" name="foundDate" style="width: 100px;" value="${department.foundDate}"></td>
 <td align="center">
-	<input type="submit" value="保存">
+	<input type="submit" value="保存" style="height: 25px; line-height: 24px">
 	||
 	<a href="departmentsServlet.action?flag=allDepartments&parent_id=${param.parent_id}">取消</a>
 </td>

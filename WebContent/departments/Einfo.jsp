@@ -35,8 +35,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<div id="regtddiv">
 		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体">注意：带有&nbsp;<font color="red">*</font>&nbsp;号的必须填写</div>
 		<fieldset>
-		<legend style="font-family: '宋体';color:#007BBB ">岗位下员工信息</legend>
-		<p style="font-size:16px;">当前岗位：${job.name}<a href="JobServlet?flag=all">（点击返回岗位管理页面）</a></p>
+		<legend style="font-family: '宋体';color:#007BBB ">部门下员工信息</legend>
+		<p style="font-size:16px;">当前部门：${department.name}<a href="departmentsServlet.action?flag=allDepartments">（点击返回部门管理页面）</a></p>
 		
 		<table class="table" style="position:relative;">
           <tr>

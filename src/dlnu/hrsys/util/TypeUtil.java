@@ -25,6 +25,11 @@ public class TypeUtil {
     public static final int TYPE_DEPARTMENT = 11;
     public static final int TYPE_LEAVE_REASON = 12;
 
+    //正式员工
+    public static final int TYPE_NORMAL_EMPLOYEE = 3;
+    //试用期员工
+    public static final int TYPE_PROBATION_EMPLOYEE = 4;
+
     private static TypeUtil instance = null;
 
     private TypeDAO dao = null;
@@ -42,7 +47,11 @@ public class TypeUtil {
     }
     
     public static String getItemName(int itemId) throws DBUtil.DBException {
-    	return getInstance().getItem(itemId).getName();
+        try {
+            return getInstance().getItem(itemId).getName();
+        } catch (NullPointerException e) {
+            return "";
+        }
     }
 
     @Nullable
@@ -117,5 +126,21 @@ public class TypeUtil {
 
     public TypeGroup getJobs() {
         return dao.getJobs();
+    }
+
+    public TypeItem getDepartment(int id) {
+        return dao.getDepartment(id);
+    }
+
+    public TypeItem getJob(int id) {
+        return dao.getJob(id);
+    }
+
+    public String getDepartmentName(int id) {
+        return getDepartment(id).getName();
+    }
+
+    public String getJobName(int id) {
+        return getJob(id).getName();
     }
 }

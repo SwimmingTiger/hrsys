@@ -25,7 +25,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <tr height="57">
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">欢迎进入人事管理平台</div>
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">添加新岗位</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_title3.jpg"></td>
 </tr>
@@ -35,7 +35,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<div id="regtddiv">
 		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体">注意：带有&nbsp;<font color="red">*</font>&nbsp;号的必须填写</div>
 		<fieldset>
-		<legend style="font-family: '宋体';color:#007BBB ">添加岗位信息(*号位必填项)</legend>
+		<legend style="font-family: '宋体';color:#007BBB ">添加岗位信息</legend>
 		<div>
 		<table border="0" style="line-height: 32px;" align="center" cellpadding="0" cellspacing="0">
 		
@@ -61,7 +61,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right">岗位编制</td>
-		<td style="padding-left: 10px; width: 440px"><input type="text" style="width: 300px;" name="size" ></td>
+		<td style="padding-left: 10px; width: 440px"><input type="text" style="width: 300px;" name="size" placeholder="留空不限制"></td>
 		<td style="padding-left: 10px; color: #808080;font-size: 12px;"><label style="padding-left: 5px;color: red"  id="companyphone_tit"></label> </td>
 		</tr>
 		

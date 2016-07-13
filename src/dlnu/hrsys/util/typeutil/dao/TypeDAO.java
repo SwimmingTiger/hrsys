@@ -170,4 +170,52 @@ public class TypeDAO {
 
         return group;
     }
+
+    @Nullable
+    public TypeItem getDepartment(int id) {
+        TypeItem item = null;
+
+        try {
+            PreparedStatement itemPst = conn
+                    .prepareStatement("SELECT id,name FROM department WHERE id = ?");
+            itemPst.setInt(1, id);
+            ResultSet itemRs = itemPst.executeQuery();
+
+            if (itemRs.next()) {
+                item = new TypeItem();
+                item.setId(itemRs.getInt("id"));
+                item.setName(itemRs.getString("name"));
+            }
+
+            itemPst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return item;
+    }
+
+    @Nullable
+    public TypeItem getJob(int id) {
+        TypeItem item = null;
+
+        try {
+            PreparedStatement itemPst = conn
+                    .prepareStatement("SELECT id,name FROM job WHERE id = ?");
+            itemPst.setInt(1, id);
+            ResultSet itemRs = itemPst.executeQuery();
+
+            if (itemRs.next()) {
+                item = new TypeItem();
+                item.setId(itemRs.getInt("id"));
+                item.setName(itemRs.getString("name"));
+            }
+
+            itemPst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return item;
+    }
 }

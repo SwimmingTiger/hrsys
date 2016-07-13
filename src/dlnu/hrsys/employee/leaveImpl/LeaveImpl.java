@@ -389,7 +389,7 @@ public class LeaveImpl implements LeaveDao {
 					leave_time1 = tDate;
 				}
 
-				sql += " AND leave_time BEWTEEN ? AND ?";
+				sql += " AND leave_time BETWEEN ? AND ?";
 				param.add(leave_time1);
 				param.add(leave_time2);
 

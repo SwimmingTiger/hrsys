@@ -40,13 +40,13 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <tr height="57">
 <td width="9" background="<%=path %>/images/regimages/reg_title1.jpg"></td>
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。</div>
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">对离职员工的信息进行维护</div>
 </td>
 <td width="13" background="<%=path %>/images/regimages/reg_title3.jpg"></td>
 </tr>
 <tr>
 <td width="9" background="<%=path %>/images/regimages/reg_left.jpg"></td>
-<td width="944">
+<td width="954">
 		<div id="regtddiv">
 		<div style="margin: 5px;text-align: right;color: #666666;font-family: 宋体"><font color="red"></font></div>
 		<fieldset>
@@ -74,8 +74,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 						<option value="${item.id}" <c:if test="${item.id == param.leave_reason_id}">selected="selected"</c:if>>${item.name}</option>
 					</c:forEach>
 				</select>
-				<input class="Wdate" type="text" onClick="WdatePicker()" style="width: 100px;height: 17px;" name="leave_time1" placeholder="开始时间">
-				<input class="Wdate" type="text" onClick="WdatePicker()" style="width: 100px;height: 17px;" name="leave_time2" placeholder="结束时间">
+				<input class="Wdate" type="text" onClick="WdatePicker()" style="width: 100px;height: 17px;" name="leave_time1" placeholder="开始时间" value="${param.leave_time1}">
+				<input class="Wdate" type="text" onClick="WdatePicker()" style="width: 100px;height: 17px;" name="leave_time2" placeholder="结束时间" value="${param.leave_time2}">
 			</p>
 			<p>
 				<input id="subbtn"  type="submit" value="查询" onclick="subcompanyreg()" style="position: relative;top: 30%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
@@ -89,9 +89,9 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</td></tr></table-->
 		</form>
 		<br>
-		<table  class="table"   style="line-height: 32px;" width="800" align="center" cellpadding="1" cellspacing="1">
+		<table  class="table"   style="line-height: 32px;" width="900" align="center" cellpadding="1" cellspacing="1">
 		<tr>
-<th class="infor_th">员工编号</th><th class="infor_th"  style=width:70px;>姓名</th><th class="infor_th">部门名称</th><th class="infor_th">岗位名称</th><th class="infor_th" style=width:120px>离职类型</th><th class="infor_th">离职时间</th><th class="infor_th">离职去向</th><th width="120px" class="infor_th">操作</th>
+<th class="infor_th">员工编号</th><th class="infor_th"  style=width:70px;>姓名</th><th class="infor_th">部门名称</th><th class="infor_th">岗位名称</th><th class="infor_th" style=width:120px>离职类型</th><th class="infor_th">离职时间</th><th class="infor_th">离职去向</th><th width="130px" class="infor_th">操作</th>
 </tr>
 <c:forEach items="${sketchy}" var="leave">
 <tr>

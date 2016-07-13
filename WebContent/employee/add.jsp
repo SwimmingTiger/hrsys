@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="dlnu.hrsys.util.TypeUtil" import="dlnu.hrsys.util.type.entity.*" %>
+<%@ page import="dlnu.hrsys.util.TypeUtil" import="dlnu.hrsys.util.typeutil.entity.*" %>
 <%
 String path = request.getContextPath();
 
@@ -32,7 +32,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 
 <td width="944" background="<%=path %>/images/regimages/reg_title2.jpg"  style="line-height: 57px;text-indent: 45px;">
 
-<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">请填写相关信息或者访问<a href="" target="_blank" class="regtit">链接</a>获取更多信息。
+<div style="font-size: 16px;font-family: Microsoft YaHei, 宋体, Segoe UI, verdana, arial;color: #fefefe">新增正式或试用期员工
 </div>
 
 </td>
@@ -53,7 +53,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		</div>
 		
 		<fieldset>
-		<legend style="font-family: '宋体';color:#007BBB ">入职信息(*号位必填项)</legend>
+		<legend style="font-family: '宋体';color:#007BBB ">员工信息</legend>
 		
 		<div>
 		<table border="0" style="line-height: 32px;"width="860px"align="center" cellpadding="0" cellspacing="0">
