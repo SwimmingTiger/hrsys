@@ -68,7 +68,7 @@ public class JobServlet extends HttpServlet {
 				int type_id = Integer.valueOf(request.getParameter("type_id"));
 				int size = 0;
 					if (request.getParameter("size").length() > 0) {
-						Integer.valueOf(request.getParameter("size"));
+						size = Integer.valueOf(request.getParameter("size"));
 					}
 
 					if (name != null && name.length() > 0) {
