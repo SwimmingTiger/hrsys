@@ -42,7 +42,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td width="944">
 		<div id="regtddiv">
 		<fieldset>
-		<legend style="font-family: '宋体';color:#007BBB ">部门列表</legend>
+			<legend style="font-family: '宋体';color:#007BBB "><a href="<%=path%>/departments/addDepartmentPage.jsp">·点击添加部门</a></legend>
+			<legend style="font-family: '宋体';color:#007BBB ">·查询部门信息</legend>
 		<div>
 		<table class="content_table" border="0" style="line-height: 32px;" width="900" align="center" cellpadding="0" cellspacing="0">
 		
@@ -61,7 +62,6 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 				
 		</SELECT>
 		<input id="inquiry"  type="submit" value="查询" onclick="subcompanyreg()" style="position: relative;top: 3%; " class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
-		<input id="add"  type="button" value="增加" onclick="location='<%=path%>/departments/addDepartmentPage.jsp'" style="position: relative;top: 3%" class="regbtn" onmouseover="this.className='regbtn_hover'" onmouseout="this.className='regbtn'">
 		</form>
 		</div>
        </td>

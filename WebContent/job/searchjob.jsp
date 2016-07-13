@@ -41,8 +41,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td width="944">
 		<div id="regtddiv">
 		<fieldset >
-		<legend style="font-family: '宋体';color:#007BBB "><a href="job/Job.jsp">·点击添加岗位信息</a></legend>
-		<legend style="font-family: '宋体';color:#007BBB ">·查询岗位信息（以下必填一个）</legend>
+		<legend style="font-family: '宋体';color:#007BBB "><a href="job/Job.jsp">·点击添加岗位</a></legend>
+		<legend style="font-family: '宋体';color:#007BBB ">·查询岗位信息</legend>
 			<div class="search_form">
 		<form method="post" action="<%=path%>/JobServlet?flag=find">
 			岗位名称:<input type="text" style="width: 180px;" name="name" value="${param.name}">
