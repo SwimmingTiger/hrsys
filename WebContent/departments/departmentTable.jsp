@@ -67,7 +67,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
        </td>
 		</tr>
 		
-<th>编号</th><th style="width: 120px">部门名称</th><th>类型</th><th style="width: 80px">电话</th><th style="width: 80px">传真</th><th style="width: 160px">描述</th><th>成立日期</th><th>操作</th>
+<th>编号</th><th style="width: 120px">部门名称</th><th>类型</th><th style="width: 80px">电话</th><th style="width: 80px">传真</th><th style="width: 120px;">描述</th><th>成立日期</th><th>操作</th>
 </tr>
 
 <c:forEach items="${alldepartments}" var="department">
@@ -81,14 +81,14 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td align="center">${department.fax}</td>
 <td align="center">${department.desc}</td>
 <td align="center">${department.foundDate}</td>
-<td align="center">
+<td align="center" style="width: 200px;">
 	<a href="departmentsServlet.action?flag=allDepartments&edit_id=${department.id}&parent_id=${param.parent_id}">修改</a>
 	||
 	<a href="departmentsServlet.action?flag=del&uid=${department.id}&parent_id=${param.parent_id}" class="active" onclick="return confirm('确认删除？')">删除</a>
 	||
-	<a href="departmentsServlet.action?flag=allDepartments&parent_id=${department.id}">查看下级部门</a>
+	<a href="departmentsServlet.action?flag=allDepartments&parent_id=${department.id}">下级部门</a>
 	||
-	<a href="departmentsServlet.action?flag=find_emp&department_id=${department.id}">查看该部门员工</a>
+	<a href="departmentsServlet.action?flag=find_emp&department_id=${department.id}">查看员工</a>
 </td>
 </c:if>
 <c:if test="${param.edit_id == department.id}">
@@ -97,7 +97,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td align="center">${department.id}</td>
 <td align="center"><input type="text" name="name" style="width: 100px;" value="${department.name}"></td>
 <td align="center">
-	<select name="typeId">
+	<select name="typeId" style="width: 80px;">
    		<c:forEach items="${typeUtil.departmentGroup}" var="item">
 			<option value="${item.id}" <c:if test="${item.id == department.typeId}">selected="selected"</c:if>>${item.name}</option>
 		</c:forEach>
@@ -108,7 +108,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 <td align="center"><input type="text" name="desc" style="width: 100px;" value="${department.desc}"></td>
 <td align="center"><input type="text" name="foundDate" style="width: 100px;" value="${department.foundDate}"></td>
 <td align="center">
-	<input type="submit" value="保存">
+	<input type="submit" value="保存" style="height: 25px; line-height: 24px">
 	||
 	<a href="departmentsServlet.action?flag=allDepartments&parent_id=${param.parent_id}">取消</a>
 </td>

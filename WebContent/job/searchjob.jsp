@@ -88,7 +88,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<td align="center"><input type="text" name="name" value="${job.name}"></td>
 		<td align="center">
 			<!--input type="text" value="${typeUtil.getItemName(job.type_id)}" readonly="readonly"-->
-			<select name="type_id">
+			<select name="type_id" style="width: 80px;">
    				<c:forEach items="${typeUtil.jobTypeGroup}" var="item">
 					<option value="${item.id}" <c:if test="${item.id == job.type_id}">selected="selected"</c:if>>${item.name}</option>
 				</c:forEach>
