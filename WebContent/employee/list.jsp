@@ -83,6 +83,8 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 	<td align="center">${typeUtil.getJobName(emp.job_id)}</td>
 	<td align="center">${emp.hire_date}</td>
 		<td align="center">
+			<a href="movement/Movement.jsp?employee_id=${emp.id}">调转</a>
+			||
 			<a href="leave/LeaveAdd.jsp?employee_id=${emp.id}">离职</a>
 			||
 			<a href="EmployeeServlet?flag=detail&id=${emp.id}">查看详细信息</a>

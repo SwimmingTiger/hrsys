@@ -43,7 +43,7 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 </head>
 <body>
 <jsp:include page="../head.jsp" />
-<form method="post" action="../LeaveServlet.action?flag=add" name="form">
+<form method="post" action="../MovementServlet.action?flag=add" name="form">
 <input type="hidden" name="methods" id="methods">
 <table border="0" cellpadding="0" cellspacing="0" width="966" align="center">
 <tr height="57">
@@ -65,10 +65,10 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right"><em></em>员工号</td>
 		<td style="padding-left: 10px;">
-			<input type="text" style="width: 46px;" id="employee_id" name="id" value="${param.employee_id}" readonly>
+			<input type="text" style="width: 46px;" id="employee_id" name="employee_id" value="${param.employee_id}" readonly>
 				<span class="emp_info emp_info_th">姓名</span><span class="emp_info">${emp.name}</span>
-				<span class="emp_info emp_info_th">当前部门</span><span class="emp_info">${typeUtil.getItemName(emp.department_id)}</span>
-				<span class="emp_info emp_info_th">当前岗位</span><span class="emp_info">${typeUtil.getItemName(emp.job_id)}</span>
+				<span class="emp_info emp_info_th">当前部门</span><span class="emp_info">${typeUtil.getDepartmentName(emp.department_id)}</span>
+				<span class="emp_info emp_info_th">当前岗位</span><span class="emp_info">${typeUtil.getJobName(emp.job_id)}</span>
 		</td>
 		<td style="padding-left: 10px; color: #808080;font-size: 12px;"><label style="padding-left: 5px;color: red"  id=""></label> </td>
 		</td>
@@ -76,43 +76,59 @@ request.setAttribute("typeUtil", TypeUtil.getInstance());
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right"><em>*</em>部门调转</td>
 		<td nowrap="nowrap" colspan="2" style="padding-left: 10px;">
-		<input type="text" name="leave_time""></td>
+			<SELECT name="department_id" id="department_id">
+				<option value="0">不调转</option>
+			<c:forEach items="${typeUtil.departments}" var="item">
+			<option value="${item.id}">${item.name}</option>
+			</c:forEach>
+			</SELECT>
 		</tr>
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right"><em>*</em>部门调转类型</td>
 		<td nowrap="nowrap" colspan="2" style="padding-left: 10px;">
 		<div class="selectdiv"  style="float: left;margin-right: 5px;">
-		<SELECT name="leave_reason_id" id="leave_reason_id">
-			<c:forEach items="${typeUtil.leaveReasonGroup}" var="item">
-				<option value="${item.id}">${item.name}</option>
-			</c:forEach>
-		</SELECT></div>
+			<SELECT name="movement_department_type" id="movement_department_type">
+				<option value="0">不调转</option>
+				<c:forEach items="${typeUtil.departmentMovementGroup}" var="item">
+					<option value="${item.id}">${item.name}</option>
+				</c:forEach>
+			</SELECT>
+		</div>
        </td>
 		</tr>
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right"><em>*</em>岗位调转</td>
-		<td style="padding-left: 10px;"><input type="text" name="destination"></td>
+		<td style="padding-left: 10px;">
+			<SELECT name="job_id" id="job_id">
+				<option value="0">不调转</option>
+				<c:forEach items="${typeUtil.jobs}" var="item">
+					<option value="${item.id}">${item.name}</option>
+				</c:forEach>
+			</SELECT>
+		</td>
 		<td style="padding-left: 10px; color: #808080;font-size: 12px;"><label style="padding-left: 5px;color: red"  id=""></label> </td>	
 		</tr>
 			<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right"><em>*</em>岗位调转类型</td>
 		<td nowrap="nowrap" colspan="2" style="padding-left: 10px;">
 		<div class="selectdiv"  style="float: left;margin-right: 5px;">
-		<SELECT name="leave_reason_id" id="leave_reason_id">
-			<c:forEach items="${typeUtil.leaveReasonGroup}" var="item">
-				<option value="${item.id}">${item.name}</option>
-			</c:forEach>
-		</SELECT></div>
+			<SELECT name="movement_job_type" id="movement_job_type">
+				<option value="0">不调转</option>
+				<c:forEach items="${typeUtil.jobMovementGroup}" var="item">
+					<option value="${item.id}">${item.name}</option>
+				</c:forEach>
+			</SELECT>
+		</div>
        </td>
 		</tr>
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right"><em>*</em>调转原因</td>
-		<td style="padding-left: 10px;"><input type="text" name="destination"></td>
+		<td style="padding-left: 10px;"><input type="text" name="movement_reason"></td>
 		<td style="padding-left: 10px; color: #808080;font-size: 12px;"><label style="padding-left: 5px;color: red"  id=""></label> </td>	
 		</tr>
 		<tr>
 		<td style="width: 150px;padding-right: 10px;" align="right"><em>*</em>调转时间</td>
-		<td style="padding-left: 10px;"><input type="text" class="Wdate" name="destination" onClick="WdatePicker()"></td>
+		<td style="padding-left: 10px;"><input type="text" class="Wdate" name="movement_time" onClick="WdatePicker()"></td>
 		<td style="padding-left: 10px; color: #808080;font-size: 12px;"><label style="padding-left: 5px;color: red"  id=""></label> </td>	
 		</tr>
 		</table>

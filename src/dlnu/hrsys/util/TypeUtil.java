@@ -24,6 +24,8 @@ public class TypeUtil {
     public static final int TYPE_JOB = 10;
     public static final int TYPE_DEPARTMENT = 11;
     public static final int TYPE_LEAVE_REASON = 12;
+    public static final int TYPE_DEPARTMENT_MOVEMENT = 13;
+    public static final int TYPE_JOB_MOVEMENT = 14;
 
     //正式员工
     public static final int TYPE_NORMAL_EMPLOYEE = 3;
@@ -142,5 +144,13 @@ public class TypeUtil {
 
     public String getJobName(int id) {
         return getJob(id).getName();
+    }
+
+    public TypeGroup getDepartmentMovementGroup() {
+        return getGroup(TYPE_DEPARTMENT_MOVEMENT);
+    }
+
+    public TypeGroup getJobMovementGroup() {
+        return getGroup(TYPE_JOB_MOVEMENT);
     }
 }

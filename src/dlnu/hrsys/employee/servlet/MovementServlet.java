@@ -7,16 +7,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dlnu.hrsys.employee.entity.Employee;
+import dlnu.hrsys.employee.impl.EmployeeDaoImpl;
 import dlnu.hrsys.employee.movement.Movement;
 import dlnu.hrsys.employee.movementDao.MovementDao;
 import dlnu.hrsys.employee.movementDaoFactory.MovementDaoFactory;
 import dlnu.hrsys.util.DBUtil;
 import dlnu.hrsys.util.DBUtil.DBException;
+import dlnu.hrsys.util.TypeUtil;
 
-public class MovementServlet {
+@WebServlet(name = "MovementServlet", urlPatterns = "/MovementServlet.action")
+public class MovementServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
@@ -27,6 +33,7 @@ public class MovementServlet {
 
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		MovementDao md;
 
 		try {
@@ -43,31 +50,36 @@ public class MovementServlet {
 
 			// 添加调转员工信息
 			if ("add".equals(flag)) {
-				int id = Integer.valueOf(request.getParameter("id"));
+				int id = 0; //id是自动增长的
+
 				int employee_id = Integer.valueOf(request.getParameter("employee_id"));
-				String front_movement_department = request.getParameter("front_movement_department");
-				String movement_department = request.getParameter("movement_department");
-				int movement_department_type = Integer.valueOf(request
-						.getParameter("movement_department_type"));
-				String front_movement_job = request.getParameter("front_movement_job");
-				String movement_job = request.getParameter("movement_job");
-				int movement_job_type = Integer.valueOf(request
-						.getParameter("movement_job_type"));
+
+				Employee employee = (new EmployeeDaoImpl()).findEmployeeById(employee_id);
+
+				String front_movement_department = TypeUtil.getInstance().getDepartmentName(employee.getDepartment_id());
+				int movement_department_id = Integer.valueOf(request.getParameter("department_id"));
+				String movement_department = TypeUtil.getInstance().getDepartmentName(movement_department_id);
+				int movement_department_type = Integer.valueOf(request.getParameter("movement_department_type"));
+
+				String front_movement_job = TypeUtil.getInstance().getJobName(employee.getJob_id());
+				int movement_job_id = Integer.valueOf(request.getParameter("job_id"));
+				String movement_job = TypeUtil.getInstance().getJobName(movement_job_id);
+				int movement_job_type = Integer.valueOf(request.getParameter("movement_job_type"));
+
 				String movement_reason = request.getParameter("movement_reason");
-				Date movement_time = Date.valueOf(request
-						.getParameter("movement_time"));
+				Date movement_time = Date.valueOf(request.getParameter("movement_time"));
 				
 				Movement l = new Movement(id, employee_id, front_movement_department,
 						movement_department, movement_department_type,
 						front_movement_job, movement_job, movement_job_type,
 						movement_reason, movement_time);
-				boolean bool = md.addMovement(l);
+
+				boolean bool = md.addMovement(l, employee, movement_department_id, movement_job_id);
+
 				if (bool) {
-					request.getRequestDispatcher("/leave/Sketchy.jsp").forward(
-							request, response);
+					response.sendRedirect("EmployeeServlet?flag=list_all");
 				} else {
-					response.sendRedirect("./leave/LeaveAdd.jsp?employee_id="
-							+ l.getEmployee_id());
+					response.getWriter().println("<script>alert('添加失败！');history.back();</script>");
 				}
 			}
 		} catch (DBException e1) {
