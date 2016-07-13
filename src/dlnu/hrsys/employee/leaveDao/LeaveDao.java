@@ -14,12 +14,16 @@ package dlnu.hrsys.employee.leaveDao;
 import java.sql.Date;
 import java.util.List;
 
-import dlnu.hrsys.employee.leave.Leave;;
+import dlnu.hrsys.employee.leave.Leave;
+import dlnu.hrsys.util.DBUtil.DBException;
 
 public interface LeaveDao {
 	
 	//添加并删除
 	public boolean addLeave(Leave l);
+	//输入添加信息
+	public Leave inputAdd(int id, Date leave_time, int leave_reason_id,
+			String destination) throws DBException;
 	//修改
 	public boolean updLeave(Leave l);
 	//全部查询

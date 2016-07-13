@@ -19,12 +19,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import dlnu.hrsys.employee.dao.EmployeeDao;
+import dlnu.hrsys.employee.entity.Employee;
+import dlnu.hrsys.employee.impl.EmployeeDaoImpl;
 import dlnu.hrsys.employee.leave.Leave;
 import dlnu.hrsys.employee.leaveDao.LeaveDao;
 import dlnu.hrsys.util.DBUtil;
+import dlnu.hrsys.util.TypeUtil;
 import dlnu.hrsys.util.DBUtil.DBException;
 
-public class LeaveImpl implements LeaveDao{
+public class LeaveImpl implements LeaveDao {
 	
 	Connection conn = null;
 	Statement stmt = null;
@@ -90,6 +95,85 @@ public class LeaveImpl implements LeaveDao{
 		}
 		
 		return flag;
+	}
+	
+	//输入添加信息
+	@Override
+	public Leave inputAdd(int id, Date leave_time, int leave_reason_id,
+			String destination) throws DBException {
+		// TODO Auto-generated method stub
+		
+		@SuppressWarnings("unused")
+		boolean flag = false;
+		int employee_id = 0;
+		String name = null;
+		String sex = null;
+		Date birth_date = null;
+		String id_card = null;
+		String department = null;
+		String job = null;
+		Date hire_date = null;
+		Date join_date = null;
+		String hire_type = null;
+		String hr_type = null;
+		String politics_status = null;
+		String nationality = null;
+		String native_place = null;
+		String phone = null;
+		String email = null;
+		int height_cm = 0;
+		String blood_type = null;
+		String marital_status = null;
+		String birth_place = null;
+		String domicile_place = null;
+		String education_status = null;
+		String degree = null;
+		String graduate_school = null;
+		String major_name = null;
+		Date graduate_date = null;
+
+		EmployeeDao employeeDao = new EmployeeDaoImpl();
+		Employee e = employeeDao.findEmployeeById(id);
+
+		employee_id = e.getId();
+		name = e.getName();
+		sex = TypeUtil.getItemName(e.getSex_id());
+		birth_date = e.getBirth_date();
+		id_card = e.getId_card();
+		department = TypeUtil.getInstance().getDepartmentName(e.getDepartment_id());
+		job = TypeUtil.getInstance().getJobName(e.getJob_id());
+		hire_date = e.getHire_date();
+		join_date = e.getJoin_date();
+		hire_type = TypeUtil.getItemName(e.getHire_type_id());
+		hr_type = TypeUtil.getItemName(e.getHr_type_id());
+		politics_status = TypeUtil.getItemName(e
+				.getPolitics_status_id());
+		nationality = TypeUtil.getItemName(e.getNationality_id());
+		native_place = e.getNative_place();
+		phone = e.getPhone();
+		email = e.getEmail();
+		height_cm = e.getHeight_cm();
+		blood_type = TypeUtil.getItemName(e.getBlood_type_id());
+		marital_status = TypeUtil.getItemName(e.getMarital_status_id());
+		birth_place = e.getBirth_place();
+		domicile_place = e.getDomicile_place();
+		education_status = TypeUtil.getItemName(e
+				.getEducation_status_id());
+		degree = TypeUtil.getItemName(e.getDegree_id());
+		graduate_school = e.getGraduate_school();
+		major_name = e.getMajor_name();
+		graduate_date = e.getGraduate_date();
+
+		Leave l = new Leave(id, leave_time, leave_reason_id,
+				destination, employee_id, name, sex, birth_date,
+				id_card, department, job, hire_date, join_date,
+				hire_type, hr_type, politics_status, nationality,
+				native_place, phone, email, height_cm, blood_type,
+				marital_status, birth_place, domicile_place,
+				education_status, degree, graduate_school, major_name,
+				graduate_date);
+		
+		return l;
 	}
 	
 	//修改
@@ -206,7 +290,6 @@ public class LeaveImpl implements LeaveDao{
 	}
 	
 	//员工详细信息查询
-	@SuppressWarnings("unchecked")
 	public Leave findDetail(int id) {
 		// TODO Auto-generated method stub
 		
